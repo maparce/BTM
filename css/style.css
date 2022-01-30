@@ -20,7 +20,7 @@ body {
         padding: 5px;
         display: grid;
         justify-content: center;    
-        background-color: rgb(36, 35, 35);
+        background-color:black;
         width: 100%;
         max-width: 42rem;
         min-width: 400px;
@@ -67,7 +67,7 @@ body {
     grid-row-gap: 1px;
     background-color:black;
     padding: 0%;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     grid-template-columns: repeat(4, 1fr);
     /* max-width: 43rem; */
     min-height: 2rem;
@@ -101,7 +101,7 @@ body {
 .infoButton {
     font-size: 14px;
     background-color: black;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     align-items: center;
     text-align: center;
     padding: 0%;
