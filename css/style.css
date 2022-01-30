@@ -1,7 +1,13 @@
 
 body {
+    font-size: 5.5vw;
     background-color: black;
-}
+  }
+  @media screen and (min-width: 600px) {
+    body {
+       font-size: 50px;
+    }
+  }
 
 #allContainer {
     display: flex;
@@ -16,14 +22,16 @@ body {
         justify-content: center;    
         background-color: rgb(36, 35, 35);
         width: 100%;
-        max-height: 48rem;
+        /* max-height: 48rem; */
         /* position: absolute; */
         left: 0px;
         top: 0px;
-        min-height: 20rem;
+        /* min-height: 20rem; */
         max-width: 42rem;
+        min-width: 26rem;
         grid-template-columns: repeat(4, 1fr);
         gap: 1px;
+       
         /* min-width: 40rem; */
 
         /* grid-auto-rows: minmax(80px, auto); */
@@ -38,9 +46,9 @@ body {
     border: 1px solid white;
     /* width: 30%; */
     /* height: 80%; */
-    min-height: 16rem;
-    min-width: 14rem;
-    max-width: 14rem;
+    /* min-height: 16rem; */
+    /* min-width: 14rem; */
+    /* max-width: 14rem; */
     /* max-height: 300px; */
     margin: 0%;
 }
@@ -52,9 +60,9 @@ body {
     border: 1px solid white;
     /* width: 70%; */
     /* height: 80%; */
-    min-height: 16rem;
-    min-width: 26rem;
-    max-width: 28rem;
+    min-height: 10rem;
+    /* min-width: 26rem; */
+    /* max-width: 28rem; */
     /* max-height: 300px; */
     margin: 0%;
 }
@@ -69,8 +77,8 @@ body {
     border: 1px solid white;
     grid-template-columns: repeat(4, 1fr);
     /* max-width: 43rem; */
-    min-height: 2rem;
-    min-width: 40rem;
+    min-height: 2vh;
+    /* min-width: 40rem; */
 
 }
 .tDiv {
@@ -88,7 +96,7 @@ body {
     vertical-align: middle; 
     color: white;
     text-align: center;
-    font-size: 3.5rem;
+    /* font-size: 8.5vw; */
     background-color: black;
     padding: 0%;
     margin: 0%;/* very important for the text to cover the entire div */
