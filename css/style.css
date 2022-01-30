@@ -22,21 +22,20 @@ body {
         justify-content: center;    
         background-color: rgb(36, 35, 35);
         width: 100%;
-        /* max-height: 48rem; */
-        /* position: absolute; */
-        left: 0px;
-        top: 0px;
-        /* min-height: 20rem; */
         max-width: 42rem;
-        min-width: 26rem;
+        min-width: 400px;
+        /* min-height: 50vh; */
         grid-template-columns: repeat(4, 1fr);
         gap: 1px;
-       
-        /* min-width: 40rem; */
-
-        /* grid-auto-rows: minmax(80px, auto); */
-        /* max-width: 42rem; */
+        
 }
+
+@media screen and (max-width: 600px) {
+    #timgContainer{
+       width: 300px;
+    }
+  }
+
 #tContainer {
     grid-column: 1;
     grid-row: 1/4;
@@ -44,12 +43,6 @@ body {
     grid-row-gap: 1px;
     background-color: white;
     border: 1px solid white;
-    /* width: 30%; */
-    /* height: 80%; */
-    /* min-height: 16rem; */
-    /* min-width: 14rem; */
-    /* max-width: 14rem; */
-    /* max-height: 300px; */
     margin: 0%;
 }
 #imgContainer {
@@ -77,7 +70,10 @@ body {
     border: 1px solid white;
     grid-template-columns: repeat(4, 1fr);
     /* max-width: 43rem; */
-    min-height: 2vh;
+    min-height: 2rem;
+    height: 3vh;
+    /* align-items: center; */
+
     /* min-width: 40rem; */
 
 }
@@ -103,6 +99,21 @@ body {
 }
 
 .infoButton {
+    font-size: 14px;
     background-color: black;
     border: 1px solid white;
+    align-items: center;
+    text-align: center;
+    padding: 0%;
+    margin: 0%;
+    vertical-align: middle; 
+    color: white;
+    text-align: center;
+    align-items: center;
 }
+
+@media screen and (max-width: 600px) {
+    .infoButton {
+       font-size: 10px;
+    }
+  }
