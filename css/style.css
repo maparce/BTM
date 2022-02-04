@@ -23,7 +23,7 @@ body {
         background-color:black;
         width: 100%;
         max-width: 42rem;
-        min-width: 400px;
+        min-width: 320px;
         /* min-height: 50vh; */
         grid-template-columns: repeat(4, 1fr);
         gap: 1px;
