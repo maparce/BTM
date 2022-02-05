@@ -3,11 +3,7 @@ body {
     font-size: 5.5vw;
     background-color: black;
   }
-  @media screen and (min-width: 600px) {
-    body {
-       font-size: 50px;
-    }
-  }
+
 
 #allContainer {
     display: flex;
@@ -22,19 +18,14 @@ body {
         justify-content: center;    
         background-color:black;
         width: 100%;
-        max-width: 42rem;
+        max-width: 72rem;
         min-width: 320px;
+        height: 500px;
         /* min-height: 50vh; */
         grid-template-columns: repeat(4, 1fr);
-        gap: 1px;
-        
-}
-
-@media screen and (max-width: 600px) {
-    #timgContainer{
-       width: 300px;
+        gap: 1px;    
     }
-  }
+
 
 #tContainer {
     grid-column: 1;
@@ -58,6 +49,7 @@ body {
     /* max-width: 28rem; */
     /* max-height: 300px; */
     margin: 0%;
+    
 }
 
 #infoContainer {
@@ -75,11 +67,10 @@ body {
     /* align-items: center; */
 
     /* min-width: 40rem; */
-
 }
 .tDiv {
     display: flex;
-    justify-content: center; /* align horizontal */
+    justify-content: center; 
     align-items: center;
     color: white;
     border: 1px solid white;
@@ -113,8 +104,37 @@ body {
     align-items: center;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) { 
+    /* meaning that at less than 600px screen then we will: */
     .infoButton {
-       font-size: 10px;
+       font-size: 14px;
     }
+    /* #timgContainer{
+        width: 320px;
+     } */
+    #imgContainer {
+        grid-column: 1 / 5;
+        grid-row: 2 / 4;
+        background-color:red;
+        position: relative;
+        }
+    
+        #tContainer {
+        font-size: 45px;
+        display: grid;
+        grid-column: 1 / 5;
+        grid-row: 1;}
+        
+        .tDiv {
+            grid-row: 1;
+        }
   }
+
+  @media screen and (min-width: 500px) {
+    body {
+        /* meaning that at more than 600px screen the font size will be at least 50px in size: */
+
+       font-size: 50px;
+       
+        }
+    }
