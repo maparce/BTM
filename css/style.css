@@ -179,8 +179,8 @@ img {
     to {opacity: 1}
   }
 
-  @media screen and (max-width: 600px) { 
-    /* meaning that at less than 600px screen then we will: */
+  @media screen and (max-width: 800px) { 
+    /* meaning that at less than 400px screen then we will: */
     .infoButton {
        font-size: 14px;
     }
