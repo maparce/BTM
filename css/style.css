@@ -1,5 +1,6 @@
 
 body {
+    font-family: 'Signika', sans-serif;
     font-size: 5.5vw;
     background-color: black;
   }
@@ -91,14 +92,14 @@ img {
     vertical-align: middle; 
     color: white;
     text-align: center;
-    /* font-size: 8.5vw; */
+    font-size: 6.5vw;
     background-color: black;
     padding: 0%;
     margin: 0%;/* very important for the text to cover the entire div */
 }
 
 .infoButton {
-    font-size: 14px;
+    font-size: 16px;
     background-color: black;
     /* border: 1px solid white; */
     align-items: center;
@@ -115,7 +116,7 @@ img {
   /* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_slideshow_auto */
 
   * {box-sizing: border-box;}
-  /* body {font-family: Verdana, sans-serif;} */
+  /* body {font-family: "Signika", sans-serif;} */
   .mySlides {display: none;}
   /* img {vertical-align: middle;} */
   
