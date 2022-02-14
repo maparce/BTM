@@ -61,7 +61,7 @@
       viewBox="83.16 202.38 175 20.94">   <!-- <xml version="1.0" encoding="utf-8"?> --><style type="text/css">	.st1{opacity:0.94;fill:#0B0506;}	.st2{fill:#0B0506;}	.st3{clip-path:url(#SVGID_2_);fill:none;stroke:#0B0506;stroke-width:0.72;stroke-miterlimit:10;}  .draggable{cursor: move;}  .transparent{stroke:none; fill:none; pointer-events:visible}</style>
         <script type="text/javascript"><![CDATA[
                   var sValue = 1690; 
-
+                  var x = undefined
                   var inc = 1;
                   var unc = 1
                   var bmousedown = 0;
@@ -137,8 +137,9 @@
 
            
                    function startDrag(evt) {
-                     if (evt.target.classList.contains('clickable') & bmousedown == 0) 
-                     {bmousedown = 1; iBot(evt)}
+                     x = evt
+                    if (evt.target.classList.contains('clickable') & bmousedown == 0 & evt.type == "mousedown") 
+                    {bmousedown = 1; iBot(evt)}
                      if (evt.target.classList.contains('draggable')) {
                        selectedElement = evt.target.parentElement;
                        offset = getMousePosition(evt);
@@ -200,7 +201,7 @@
                     	<circle class="st3" cx="87.6" cy="213.9" r="1.7"></circle>	
                       <circle class="st3" cx="197.7" cy="213.9" r="1.7"></circle>
                       <text id="sliderText" x="104" y="222" font-size=".5em">Towns built before: </text>
-                      <circle id="iBot" class="clickable incorporated" cx="210" cy="208" r="4"></circle>
+                      <circle id="iBot" class="clickable incorporated" cx="210" cy="208" r="4" onmousdown='iBot(evt)'></circle>
                       <!-- <rect   id="iBotRect" class="clickable incorporated" x="210" y="208" width="11" height="10.4"></rect> -->
 
                       <circle id="uBot" class="clickable unincorporated" cx="210" cy="219" r="4"></circle>
