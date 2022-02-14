@@ -64,6 +64,8 @@
 
                   var inc = 1;
                   var unc = 1
+                  var bmousedown = 0;
+
                  function makeDraggable(evt) {
                    var svg = evt.target;
                    svg.addEventListener('mousedown', startDrag);
@@ -92,6 +94,7 @@
                        y: (evt.clientY - CTM.f) / CTM.d
                      };
                    }
+
                    ///function for the incorporated/un button 
                    function iBot(evt){
                      x = evt
@@ -134,8 +137,8 @@
 
            
                    function startDrag(evt) {
-                     if (evt.target.classList.contains('clickable')) 
-                     {iBot(evt)}
+                     if (evt.target.classList.contains('clickable') & bmousedown == 0) 
+                     {bmousedown = 1; iBot(evt)}
                      if (evt.target.classList.contains('draggable')) {
                        selectedElement = evt.target.parentElement;
                        offset = getMousePosition(evt);
@@ -183,6 +186,7 @@
            
                    function endDrag(evt) {
                      selectedElement = false;
+                     bmousedown = 0;
                    }
                  }
                ]]> </script>
