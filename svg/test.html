@@ -72,11 +72,11 @@
                    svg.addEventListener('mousemove', drag);
                    svg.addEventListener('mouseup', endDrag);
                    svg.addEventListener('mouseleave', endDrag);
-                   svg.addEventListener('touchstart', startDrag);
-                   svg.addEventListener('touchmove', drag);
-                   svg.addEventListener('touchend', endDrag);
-                   svg.addEventListener('touchleave', endDrag);
-                   svg.addEventListener('touchcancel', endDrag);
+                   //svg.addEventListener('touchstart', startDrag);
+                   //svg.addEventListener('touchmove', drag);
+                   //svg.addEventListener('touchend', endDrag);
+                   //svg.addEventListener('touchleave', endDrag);
+                   //svg.addEventListener('touchcancel', endDrag);
            
                    var selectedElement, offset, transform,
                        bbox, minX, maxX, minY, maxY, confined;
@@ -201,6 +201,8 @@
                       <circle class="st3" cx="197.7" cy="213.9" r="1.7"></circle>
                       <text id="sliderText" x="104" y="222" font-size=".5em">Towns built before: </text>
                       <circle id="iBot" class="clickable incorporated" cx="210" cy="208" r="4"></circle>
+                      <!-- <rect   id="iBotRect" class="clickable incorporated" x="210" y="208" width="11" height="10.4"></rect> -->
+
                       <circle id="uBot" class="clickable unincorporated" cx="210" cy="219" r="4"></circle>
                       <text id="iText" x="215" y="210" font-size=".4em" >Incorporated</text>
                       <text id="uText" x="215" y="221" font-size=".4em">Unincorporated</text>
