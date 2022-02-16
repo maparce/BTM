@@ -273,7 +273,7 @@
             var d = parseInt(e.properties.DecadeEst.split('-')[0])
             if(d<decade){
               // console.log(e.geometry.coordinates[0])
-              var marker = L.circle([e.geometry.coordinates[1], e.geometry.coordinates[0]])
+              var marker = L.circleMarker([e.geometry.coordinates[1], e.geometry.coordinates[0]])
               if(e.properties.Incorporated == "Yes" & inc==1) {marker.options.color = 'orange'
               marker.addTo(map)
               markerDecadeArrayINC.push(marker)
