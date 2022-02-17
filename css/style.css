@@ -1,8 +1,8 @@
 
 body {
-    font-family: 'Signika', sans-serif;
-    font-size: 5.5vw;
-    background-color: black;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 4.5vw;
+    background-color: #010221;
   }
 
 img {
@@ -24,7 +24,7 @@ img {
         width: 100%;
         max-width: 72rem;
         min-width: 320px;
-        height: 500px;
+        height: 800px;
         /* min-height: 50vh; */
         grid-template-columns: repeat(4, 1fr);
         gap: 1px;
