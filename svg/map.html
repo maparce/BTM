@@ -29,7 +29,7 @@
     }
     .incorporated{
         stroke: none;
-        fill: darkblue;
+        fill: yellowgreen;
         stroke-linecap:round;
         stroke-width:.2;
         stroke-dasharray:1,1;
@@ -101,7 +101,7 @@
                     if (evt.target.classList.contains('incorporated'))
                     { 
                       if (inc == 0)
-                      { evt.target.style.fill = 'dark blue';
+                      { evt.target.style.fill = 'yellowgreen';
                         evt.target.style.stroke = 'none';
                         inc = 1
                         decadeLessThan(sValue)
@@ -109,7 +109,7 @@
                       }
                       if (inc == 1) {
                     evt.target.style.fill = 'none'
-                    evt.target.style.stroke = 'dark blue'
+                    evt.target.style.stroke = 'yellowgreen'
                     inc = 0
                     decadeLessThan(sValue, 'incOff')
                     return }
@@ -274,7 +274,7 @@
             if(d<decade){
               // console.log(e.geometry.coordinates[0])
               var marker = L.circleMarker([e.geometry.coordinates[1], e.geometry.coordinates[0]])
-              if(e.properties.Incorporated == "Yes" & inc==1) {marker.options.color = 'dark blue'
+              if(e.properties.Incorporated == "Yes" & inc==1) {marker.options.color = 'yellowgreen'
               marker.addTo(map)
               markerDecadeArrayINC.push(marker)
                 }
