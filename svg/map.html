@@ -11,7 +11,7 @@
   </head>
 <style>
   #daMap {
-        background-color: blue;
+        background-color: black;
         width: 100%;
         height: 400px;
         /* position: absolute; */
@@ -29,7 +29,7 @@
     }
     .incorporated{
         stroke: none;
-        fill: orange;
+        fill: darkblue;
         stroke-linecap:round;
         stroke-width:.2;
         stroke-dasharray:1,1;
@@ -101,7 +101,7 @@
                     if (evt.target.classList.contains('incorporated'))
                     { 
                       if (inc == 0)
-                      { evt.target.style.fill = 'orange';
+                      { evt.target.style.fill = 'dark blue';
                         evt.target.style.stroke = 'none';
                         inc = 1
                         decadeLessThan(sValue)
@@ -109,7 +109,7 @@
                       }
                       if (inc == 1) {
                     evt.target.style.fill = 'none'
-                    evt.target.style.stroke = 'orange'
+                    evt.target.style.stroke = 'dark blue'
                     inc = 0
                     decadeLessThan(sValue, 'incOff')
                     return }
@@ -231,7 +231,7 @@
     <script src="../data/BT.js"></script>
     <script>
       var map = L.map('daMap', { attributionControl:false }).setView([39.5, -100], 3);
-      var daTile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      var daTile = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 	maxZoom: 19,  })
         daTile.addTo(map)
         var markerArray = []
@@ -274,7 +274,7 @@
             if(d<decade){
               // console.log(e.geometry.coordinates[0])
               var marker = L.circleMarker([e.geometry.coordinates[1], e.geometry.coordinates[0]])
-              if(e.properties.Incorporated == "Yes" & inc==1) {marker.options.color = 'orange'
+              if(e.properties.Incorporated == "Yes" & inc==1) {marker.options.color = 'dark blue'
               marker.addTo(map)
               markerDecadeArrayINC.push(marker)
                 }
