@@ -13,28 +13,34 @@
     #test{
         padding: 0;
         margin: 0;
-        left: 0;
+        /* left: 0; */
         top: 0;
     }
     #cartoInfo{
         overflow: scroll
     }
     #titleCarto{
-        margin: 10px;
+        margin-top: 10px;
         text-align: center;
-        font-size: 8vh; 
+        padding: 0px;
+        /* font-size: 8vh;  */
       /* i need to put 10vh for vertical cellphone position */
     }
+    #subTitleCarto{
+        padding: 0px;
+        margin-bottom: 5px;
+        text-align: center;}
+    
     #stateCarto{
         margin: 5px;
         text-align: left;
         margin-left: 10px;
-        font-size: 7vh; 
+        /* font-size: 7vh;  */
     }
     #numberCarto{
         text-align: left;
         margin-left: 10px;
-        font-size: 6vh; 
+        /* font-size: 6vh;  */
     }
     #lineDivision{
         background-color: black;
@@ -90,31 +96,42 @@
         var infoDIV = document.getElementById(infoID)
         daDiv.innerHTML = '';
         infoDIV.innerHTML = '';
-        if (window.innerHeight < window.innerWidth) {
+        if (3*window.innerHeight < 2.5*window.innerWidth) 
+        
+        {
             console.log('landscape')
             daDiv.style.height = window.innerHeight + 'px';
             daDiv.style.width = window.innerHeight * 1.2 + 'px'
-            
+            daDiv.style.left = (window.innerWidth - (window.innerHeight * 1.2)) + 'px'
+            daDiv.style.top = '0px'
+            daDiv.zIndex = 100;
+            // if you want the cartogram in the left change this
+
             infoDIV.style.height = window.innerHeight + 'px'
             infoDIV.style.width = (window.innerWidth - (window.innerHeight * 1.2)) + 'px'
             infoDIV.style.top = '0px'
-            infoDIV.style.left = window.innerHeight * 1.2 + 'px'
-        }
-
-        if (window.innerWidth/window.innerHeight < 1) {
+            infoDIV.style.left = '0px' // if you want the cartogram in the left change this
+            infoDIV.zIndex = 0;
+            // infoDIV.style.left = window.innerHeight * 1.2 + 'px'
+        } else {
             console.log('portrait') 
             daDiv.style.width = window.innerWidth + 'px';
             daDiv.style.height = window.innerWidth * .833 + 'px'
-            
+            daDiv.style.top = (window.innerHeight - (window.innerWidth * .833)) + 'px'
+            daDiv.style.left = '0px'
+            daDiv.zIndex = 100;
             infoDIV.style.width = window.innerWidth + 'px'
             infoDIV.style.height = (window.innerHeight - (window.innerWidth * .833)) + 'px'
-            infoDIV.style.top = window.innerWidth * .833 + 'px'
+            infoDIV.style.top = '0px'
+            // infoDIV.style.top = window.innerWidth * .833 + 'px'
             infoDIV.style.left = '0px'
+            // infoDiv.zIndex = 0;
             }
 
             cartogram.size = document.getElementById(divID).getBoundingClientRect().width * .078 
             cartogram.fontSize = cartogram.size/3 //'20'//'20'
             cartogram.makeRectangle(divID)
+            mL.fontSize = cartogram.fontSize
             mL.make(infoID)
         }
     onResize('test', 'cartoInfo')
