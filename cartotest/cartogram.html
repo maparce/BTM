@@ -84,30 +84,31 @@
     cartogram.border = 15
 
     function onResize(divID, infoID) {
+        // location.reload()
         var daDiv = document.getElementById(divID)
         daDiv.innerHTML = ''
         var infoDIV = document.getElementById(infoID)
         daDiv.innerHTML = '';
         infoDIV.innerHTML = '';
-        if (screen.width/screen.height > 1) {
+        if (window.innerHeight < window.innerWidth) {
             console.log('landscape')
-            daDiv.style.height = screen.height + 'px';
-            daDiv.style.width = screen.height * 1.2 + 'px'
+            daDiv.style.height = window.innerHeight + 'px';
+            daDiv.style.width = window.innerHeight * 1.2 + 'px'
             
-            infoDIV.style.height = screen.height + 'px'
-            infoDIV.style.width = (screen.width - (screen.height * 1.2)) + 'px'
+            infoDIV.style.height = window.innerHeight + 'px'
+            infoDIV.style.width = (window.innerWidth - (window.innerHeight * 1.2)) + 'px'
             infoDIV.style.top = '0px'
-            infoDIV.style.left = screen.height * 1.2 + 'px'
+            infoDIV.style.left = window.innerHeight * 1.2 + 'px'
         }
 
-        if (screen.width/screen.height < 1) {
+        if (window.innerWidth/window.innerHeight < 1) {
             console.log('portrait') 
-            daDiv.style.width = screen.width + 'px';
-            daDiv.style.height = screen.width * .833 + 'px'
+            daDiv.style.width = window.innerWidth + 'px';
+            daDiv.style.height = window.innerWidth * .833 + 'px'
             
-            infoDIV.style.width = screen.width + 'px'
-            infoDIV.style.height = (screen.height - (screen.width * .833)) + 'px'
-            infoDIV.style.top = screen.width * .833 + 'px'
+            infoDIV.style.width = window.innerWidth + 'px'
+            infoDIV.style.height = (window.innerHeight - (window.innerWidth * .833)) + 'px'
+            infoDIV.style.top = window.innerWidth * .833 + 'px'
             infoDIV.style.left = '0px'
             }
 
