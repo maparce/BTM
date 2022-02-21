@@ -55,7 +55,7 @@
     }
     .incorporated{
         stroke: none;
-        fill: darkblue;
+        fill: yellowgreen;
         stroke-linecap:round;
         stroke-width:.2;
         stroke-dasharray:1,1;
@@ -218,7 +218,7 @@
                     if (evt.target.classList.contains('incorporated'))
                     { 
                       if (inc == 0)
-                      { evt.target.style.fill = 'dark blue';
+                      { evt.target.style.fill = 'yellowgreen';
                         evt.target.style.stroke = 'none';
                         inc = 1
                         decadeLessThan(sValue)
@@ -226,7 +226,7 @@
                       }
                       if (inc == 1) {
                     evt.target.style.fill = 'none'
-                    evt.target.style.stroke = 'dark blue'
+                    evt.target.style.stroke = 'yellowgreen'
                     inc = 0
                     decadeLessThan(sValue, 'incOff')
                     return }
