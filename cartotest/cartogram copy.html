@@ -48,9 +48,6 @@
 
 </head>
 <body>
-    <!-- Add to svgs: On hover display state name and number of towns identified// -->
-<!-- Add title: Number of Black Towns Identified By State -->
-<!-- Add legend (5 classes): - (1) None; (2) 1-9; (3) 10-19; (4) 20-29; (5) 30 or more -->
 <!-- <div id= "test1" style="background-color: burlywood; position: absolute; left: 50%; width: 100%; height: 300px;"></div> -->
 <!-- <h3>7 x 7 squares</h3> -->
 <!-- //on hover display state name and number of towns identified// -->
@@ -79,7 +76,7 @@
     cartogram.data.x = dataCarto.X; // data with the x coordinate
     cartogram.data.y = dataCarto.Y; // data with the y coordinate 
     cartogram.colorArray = ['#969696','#6F8CA6','#3C5973','#142740','#081526'], //set the color in increasing value // somethink is wrong with Oklahoma
-    cartogram.colorClass = [0,9,19,30,56]; // set value of color less or equal than
+    cartogram.colorClass = [0,1,10,20,30]; // set value of color less or equal than
     cartogram.xy = [11,9]
     cartogram.border = 15
 
@@ -117,7 +114,9 @@
             mL.make(infoID)
         }
     onResize('test', 'cartoInfo')
- 
+
+
+
 </script>
 
 </body>
