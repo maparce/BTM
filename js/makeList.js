@@ -1,10 +1,13 @@
 var mL = {
     divName: '',
+    state: '',
+    numberOfStates:0,
     infoArray:[],
     make(divID,infoArray) {
-        if (divID == null) {divID = this.divName}
+        if (divID == undefined) {divID = this.divName}
         if (infoArray == undefined) {infoArray = this.infoArray}
         var daDIV = document.getElementById(divID)
+        daDIV.innerHTML = ''
         // from https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
         var newDiv = document.createElement("div");
         newDiv.setAttribute('id','titleCarto')
@@ -12,11 +15,11 @@ var mL = {
         daDIV.appendChild(newDiv)
         newDiv = document.createElement("div");
         newDiv.setAttribute('id','stateCarto')
-        newDiv.innerHTML = 'State:'
+        newDiv.innerHTML =  this.state //'State: ' +
         daDIV.appendChild(newDiv)
         newDiv = document.createElement("div");
         newDiv.setAttribute('id','numberCarto')
-        newDiv.innerHTML = 'Number of Towns:'
+        newDiv.innerHTML = 'Number of Towns: ' + this.numberOfStates
         daDIV.appendChild(newDiv)
         newDiv = document.createElement("div");
         newDiv.setAttribute('id','lineDivision')

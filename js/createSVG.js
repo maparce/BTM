@@ -18,7 +18,15 @@ var cartogram = {
     color: 'green',
     colorArray:['black', 'green', 'blue'], //set the color in increasing value
     colorClass:[0,10,80], // set value of color less or equal
-    clickCarto: function() {console.log('clickCarto')},
+    clickCarto: 
+                function(evt) {
+                var index = parseInt(evt.target.id.split('_cart_')[1])
+                
+                // mL.state = evt.target.id.split('_cart')[0]
+                mL.state = dataCarto.STATE_LONG[index]
+                mL.numberOfStates = dataCarto.TOWNS[index]
+                mL.make('cartoInfo')
+            },
     assignColor: function(value){
             for (var i = 0; i < this.colorArray.length; i++){
                 if(value <= this.colorClass[i]){
@@ -89,8 +97,9 @@ var cartogram = {
             var yRect = cartogram.xyObject[objectName][1]
                 
                 var gElem = document.createElementNS(xmlns, 'g');
-                gElem.setAttributeNS(null,'id', element +'_cart'); 
+                gElem.setAttributeNS(null,'class', element +'_cart_'); 
                 var rectElem = document.createElementNS(xmlns, 'rect');
+                rectElem.setAttributeNS(null,'id', element +'_cart_' +index);
                 rectElem.setAttributeNS(null,'x', xRect); 
                 rectElem.setAttributeNS(null,'y', yRect);
                 rectElem.setAttributeNS(null,'width', cartogram.size);
@@ -108,7 +117,7 @@ var cartogram = {
                 textElem.setAttributeNS(null,'font-size', cartogram.fontSize+'px');
                 textElem.setAttributeNS(null,'fill', 'white');
                 textElem.innerHTML = element
-// 
+                textElem.style.pointerEvents = 'none'
                 textElem.innerHTML = element
                 gElem.appendChild(textElem)
                 divSVG.appendChild(gElem)
