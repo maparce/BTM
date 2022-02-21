@@ -118,7 +118,17 @@
             mL.make(infoID)
         }
     onResize('test', 'cartoInfo')
- 
+window.addEventListener("orientationchange", function(event) {
+    onResize('test', 'cartoInfo')
+    // location.reload()
+});
+
+window.addEventListener("resize", function(event) {
+    onResize('test', 'cartoInfo')
+    // location.reload()
+});
+
+
 </script>
 
 </body>
