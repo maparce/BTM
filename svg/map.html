@@ -10,21 +10,47 @@
     crossorigin=""/>
   </head>
 <style>
+  #largeDiv{
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        right: 0px;
+  }
   #daMap {
         background-color: black;
         width: 100%;
         height: 400px;
-        /* position: absolute; */
+        /* width: 100%;
+        height: 400px; */
+        position: relative;
+        margin: 0;
+        padding: 0;
+        right: 0;
+
     }
     #container {
         /* grid-template-columns: repeat(4, 1fr); */
         display: grid;
         width: 100%;
-        height: 50%;
-        /* position: absolute; */
+        /* width: 330px; */
+        /* height: 50%; */
+/* the following will allow it to be in the middle  */
+        background-color: white;
+        opacity: 0.85; 
+        /* margin: auto // important for centering  */
+        margin: auto;
+        top: 350px;
+        position:absolute; 
+        /* bottom:-10px; */
+        z-index: 999;
     }
     #svgDiv{
-      background-color: brown;
+              /* margin: auto // important for centering  */
+      margin: auto;
+      position: relative;
+      width: 330px;
+      height: 60px;
+      /* bottom: 0; */
 
     }
     .incorporated{
@@ -44,21 +70,112 @@
         pointer-events: visible;
 
     }
+    .clickable{
+      pointer-events: visible;
+      /* fill:black; 
+      stroke:none */
+    }
+    #pauseBot{
+      pointer-events: visible;
+      stroke: black;
+    }
+
+    #iPlayBot{
+      pointer-events: visible;
+      stroke: black;
+      /* stroke: none; */
+      fill:black;
+    }
+    #oPlayBot{
+      pointer-events: visible;
+      stroke: black;
+      /* fill:none; */
+      fill:black;
+
+    }
+
+    #titleDiv{
+      text-align: center;
+      font-size: x-large;
+      position: absolute;
+      /* background-color: aquamarine; */
+      width: 100%;  
+      height: 30px;  
+      top: 1%;
+      padding: 0%;
+      margin: auto;
+      z-index: 9999;
+    }
+    #daTitle{
+            margin: auto; 
+            background-color:white;
+            opacity: .85;
+            width: 300px;
+    }
+    .tick{
+      stroke: black;
+    }
+    .tickText{
+      text-anchor:middle;
+    }
+    .wideLine{
+      stroke-width: 2px;
+    }
+    #info{
+      margin: auto;
+      width:100%;
+      height: 300px;
+      display: grid;
+      /* background-color: blueviolet; */
+      position: relative;
+    }
+    .infoTab{
+      font-size: small;
+      color: rgb(28, 34, 34);
+      margin: 5px;
+      margin-left: 10px;
+      padding: 0;
+      overflow: scroll;
+    }
+
+    /* #infoName { grid-area: name; }
+    #infoState { grid-area: state; }
+    #infoYearEst { grid-area: year; }
+    #infoExisting { grid-area: existing; }
+    #infoInc { grid-area: inc; }
+    #infoYearInc { grid-area: yearinc; }
+    #infoSource { grid-area: source; }
+
+    #infoContainer {
+     display: grid;
+    grid-template-areas:
+    'name name name'
+    'state state state'
+    'inc yearinc yearinc'
+    'source source source'
+    'source source source';
+      gap: 3px;
+      background-color: #2196F3;
+      padding: 5px;
+    } */
 
 </style>
 <body>
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
   crossorigin=""></script>
-
+<div id="largeDiv">
+  <div id="titleDiv">
+    <div id="daTitle">Towns built before:</div>
+    </div>
     <div id="daMap"></div>
     <div id="container">
       <!-- "83.16 202.38 119.97 20.94" -->
-      <div>
+      <div id="svgDiv">
       <svg version="1.1" id="slider" xmlns="http://www.w3.org/2000/svg" 
       xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" 
       xml:space="preserve" onload="makeDraggable(evt)" 
-      viewBox="83.16 202.38 175 20.94">   <!-- <xml version="1.0" encoding="utf-8"?> --><style type="text/css">	.st1{opacity:0.94;fill:#0B0506;}	.st2{fill:#0B0506;}	.st3{clip-path:url(#SVGID_2_);fill:none;stroke:#0B0506;stroke-width:0.72;stroke-miterlimit:10;}  .draggable{cursor: move;}  .transparent{stroke:none; fill:none; pointer-events:visible}</style>
+      viewBox="70 196.38 185 26.94">   <!-- <xml version="1.0" encoding="utf-8"?> --><style type="text/css">	.st1{opacity:0.94;fill:#0B0506;}	.st2{fill:#0B0506;}	.st3{clip-path:url(#SVGID_2_);fill:none;stroke:#0B0506;stroke-width:0.72;stroke-miterlimit:10;}  .draggable{cursor: move;}  .transparent{stroke:none; fill:none; pointer-events:visible}</style>
         <script type="text/javascript"><![CDATA[
                   var sValue = 1690; 
                   var x = undefined
@@ -139,12 +256,17 @@
                    function startDrag(evt) {
                     
                     if (evt.target.classList.contains('clickable') & bmousedown == 0 & evt.type == "mousedown") 
-                    {bmousedown = 1; iBot(evt)}
+                    {bmousedown = 1; 
+                      if (evt.target.classList.contains('play'))
+                      {playTimer('start')}
+                      if (evt.target.classList.contains('pause'))
+                      {playTimer('pause')}
+                      iBot(evt)}
                      if (evt.target.classList.contains('draggable')) {
                        selectedElement = evt.target.parentElement;
                        offset = getMousePosition(evt);
-                       clearInterval(timer)
-           
+                      playTimer('pause')
+                      
                        // Make sure the first transform on the element is a translate transform
                        var transforms = selectedElement.transform.baseVal;
                        if (transforms.length === 0 || transforms.getItem(0).type !== SVGTransform.SVG_TRANSFORM_TRANSLATE) {
@@ -192,15 +314,31 @@
                    }
                  }
                ]]> </script>
-        
-        <g id="elG" class="draggable">	<rect x="137" y="203.3" class="transparent draggable" width="11" height="10.4"></rect>	<path class="st1 draggable" d="M139.7,209.8c0.9-0.8,1.9-1.7,2.8-2.5c0.9,0.8,1.9,1.7,2.8,2.5c0,1.2,0,2.4,0,3.6c0,0,0,0,0,0.1c0,0,0,0,0,0   c0,0,0,0-0.1,0c0,0,0,0-0.1,0c-0.6,0-1.2,0-1.7,0c0-0.5,0-1.1,0-1.6c0,0,0-0.1,0-0.1c0,0,0,0-0.1,0c0,0-0.1,0-0.1,0   c-0.5,0-1,0-1.5,0c0,0-0.1,0-0.1,0l-0.1,0.1c0,0,0,1.6,0,1.6c-0.6,0-1.2,0-1.8,0c0,0-0.1,0-0.1,0c0,0,0,0,0,0c0,0,0,0,0-0.1   C139.7,212.1,139.7,210.9,139.7,209.8z"></path>	
+               <g transform= 'translate(-8 4)'>
+        <g id="elG" class="draggable">	<rect class="transparent draggable" x="137" y="203.3"  width="11" height="10.4"></rect>	<path class="st1 draggable" d="M139.7,209.8c0.9-0.8,1.9-1.7,2.8-2.5c0.9,0.8,1.9,1.7,2.8,2.5c0,1.2,0,2.4,0,3.6c0,0,0,0,0,0.1c0,0,0,0,0,0   c0,0,0,0-0.1,0c0,0,0,0-0.1,0c-0.6,0-1.2,0-1.7,0c0-0.5,0-1.1,0-1.6c0,0,0-0.1,0-0.1c0,0,0,0-0.1,0c0,0-0.1,0-0.1,0   c-0.5,0-1,0-1.5,0c0,0-0.1,0-0.1,0l-0.1,0.1c0,0,0,1.6,0,1.6c-0.6,0-1.2,0-1.8,0c0,0-0.1,0-0.1,0c0,0,0,0,0,0c0,0,0,0,0-0.1   C139.7,212.1,139.7,210.9,139.7,209.8z"></path>	
                   <path class="st2 draggable" d="M137.8,209.7c0,0.3,0,0.5,0,0.8c0.1,0.1,0.2,0.2,0.2,0.3c1.5-1.7,3-3.4,4.5-5.1c1.5,1.7,3,3.4,4.5,5.1   c0.1-0.1,0.2-0.2,0.3-0.3c0-0.2,0-0.5,0-0.7c-1.6-1.8-3.2-3.6-4.8-5.4C140.9,206.1,139.4,207.9,137.8,209.7z"></path>	
                   <path class="st2 draggable" d="M139.8,204.9c0,0.6,0,1.2,0,1.8c0.4-0.4,0.8-0.7,1.2-1.1c0-0.2,0-0.5,0-0.7   C140.6,204.9,140.2,204.9,139.8,204.9z"></path>
-                </g><g>	
-                    <line class="st3" x1="89.2" y1="213.9" x2="196" y2="213.9"></line>
-                    	<circle class="st3" cx="87.6" cy="213.9" r="1.7"></circle>	
-                      <circle class="st3" cx="197.7" cy="213.9" r="1.7"></circle>
-                      <text id="sliderText" x="104" y="222" font-size=".5em">Towns built before: </text>
+                </g>
+                <g id="pauseBot" class="clickable pause" transform= 'translate(2 0)'>
+                    <rect class="clickable pause transparent" x="196" y="199"  width="5" height="10"></rect>
+                    <line class="clickable pause wideLine" x1="197" y1="200" x2="197" y2="208"></line>
+                    <line class="clickable pause wideLine" x1="200" y1="200" x2="200" y2="208"></line>
+                  </g>
+                  <g id="playBot" class="clickable" transform= 'translate(-2 0)'>
+                    <polygon id="oPlayBot" class="clickable play" points="82,200, 89,204, 82,208"></polygon>
+                    <!-- <polygon id="i2PlayBot" class="" points="82.25,200.5, 88,204, 82.25,207.5" fill="white"></polygon> -->
+                    <!-- <polygon id="iPlayBot" class="clickable play" points="83,202, 87,204, 83,206"></polygon> -->
+                  </g>
+                  <!-- make the finger pointer -->
+                  <g id="sliderLineTicks">
+                  <line id="sliderLine" class="st3" x1="92" y1="204" x2="193" y2="204"></line>
+                </g>  
+                </g>
+                  <g transform= 'translate(0 -4)'>
+                    	<!-- <circle class="st3" cx="87.6" cy="213.9" r="1.7"></circle>	 -->
+                      <!-- <circle class="st3" cx="197.7" cy="213.9" r="1.7"></circle> -->
+                      <!-- <text id="sliderText" x="104" y="222" font-size=".5em">Towns built before: </text> -->
+                      
                       <circle id="iBot" class="clickable incorporated" cx="210" cy="208" r="4" onmousdown='iBot(evt)'></circle>
                       <!-- <rect   id="iBotRect" class="clickable incorporated" x="210" y="208" width="11" height="10.4"></rect> -->
 
@@ -217,10 +355,43 @@
                   </div> -->
               
   </div>
+</div>
+<div id="infoContainer" >
+  <div id="infoName" class="infoTab"></div>
+  <div id="infoState" class="infoTab"></div>
+  <!-- <div id="infoYearInc" class="infoTab"></div> -->
+  <div id="infoYearEst" class="infoTab"></div>
+  <div id="infoInc" class="infoTab"></div>
+
+  <!-- <div id="infoExisting" class="infoTab"></div> -->
+  <div id="infoSource" class="infoTab"></div>
+
+</div>
     <script>
+        function fillInfo(index){
+          var existing = BT.features[index].properties["Existing"]
+          if (existing == 'No') {existing = ' *not existing'}
+          else {existing = ''}
+          var yInc = BT.features[index].properties["YearInc"]
+          var incorporated = BT.features[index].properties['Incorporated']
+          var yearInc = '';
+          if (incorporated == 'No') {incorporated = 'Unincorporated'}
+          else {incorporated = 'Incorporated';
+            yearInc = BT.features[index].properties['YearInc']
+            if (yearInc == 'N/A') {yearInc = ''} else {yearInc = ' on year: ' + yearInc}
+            }
+          document.getElementById("infoName").innerHTML = "Town Name: " + BT.features[index].properties["Town Name"]
+          document.getElementById("infoState").innerHTML = "State: " + BT.features[index].properties["State"]
+          document.getElementById("infoYearEst").innerHTML = "Year Established: " + BT.features[index].properties["YearEst"] + existing
+          document.getElementById("infoSource").innerHTML = "Source: " + BT.features[index].properties["Source1"] 
+          document.getElementById("infoInc").innerHTML = incorporated + yearInc
+        //TODO MAKE HYPERLINK TO HTTP AND HTTPS SOURCES. 
+        }
+
         function scrollerValue(dx){
             var decadeNum = ((Math.trunc((dx+50)/3.03) * 10) + 1690)
-            document.getElementById('sliderText').innerHTML = "Towns built before: " 
+            // document.getElementById('sliderText').innerHTML = "Towns built before: " 
+            document.getElementById('daTitle').innerHTML = "Towns built before: " 
             + decadeNum
             decadeLessThan(decadeNum)
             sValue = decadeNum
@@ -235,11 +406,18 @@
 	maxZoom: 19,  })
         daTile.addTo(map)
         var markerArray = []
-        function addMarkers(){
-            var xy = BT.features[0].geometry.coordinates
-            var marker = L.marker([xy[1],xy[0]]);
-            markerArray.push(marker)
-            marker.addTo(map)
+        // function addMarkers(){
+        //     var xy = BT.features[0].geometry.coordinates
+        //     var marker = L.marker([xy[1],xy[0]]);
+        //     // maker.on('mouseover', function() {console.log('hola')})
+        //     marker.on("mouseover", markerOnClick)
+        //     markerArray.push(marker)
+        //     marker.addTo(map)
+        // }
+
+        function markerOnClick(e){
+          fillInfo(e.target.index)
+          // console.log(BT.features[e.target.index].properties["Town Name"])
         }
 
         function removeAllMarkers(markerArray){
@@ -253,6 +431,7 @@
           return minMax
         }        
         // the min 1690 and max 1960 however I will make the scroller go from 1690 to 2020
+        var marker = undefined;
         var markerDecadeArrayINC = []
         var markerDecadeArrayUNC = []
         function decadeLessThan(decade, opt){
@@ -269,11 +448,16 @@
           removeAllMarkers(markerDecadeArrayUNC)
           markerDecadeArrayINC = []
           markerDecadeArrayUNC = []
-          BT.features.forEach(e=>{
+          BT.features.forEach((e, index) =>{
             var d = parseInt(e.properties.DecadeEst.split('-')[0])
             if(d<decade){
               // console.log(e.geometry.coordinates[0])
               var marker = L.circleMarker([e.geometry.coordinates[1], e.geometry.coordinates[0]])
+              // marker.properies.name = "x";
+              // console.log(marker)
+              marker.on("click", markerOnClick)
+              marker.on("mouseover", markerOnClick)
+              marker.index = index;
               if(e.properties.Incorporated == "Yes" & inc==1) {marker.options.color = 'dark blue'
               marker.addTo(map)
               markerDecadeArrayINC.push(marker)
@@ -283,7 +467,8 @@
               marker.addTo(map)
               markerDecadeArrayUNC.push(marker)
                   }
-              
+                  // debugger;
+
               // You could add the pupup here using previous tutorials and decide the style too
               // it is called a marker but it is really a circle
     
@@ -292,39 +477,113 @@
             })
         }
 
-        // if -50 is 1690 and 50 is 2020
+ 
+var makeTicks = function(lineID, geo, tickSize, minMax, tickArray, text, tsize,gap){
+  var xmlns = "http://www.w3.org/2000/svg";
+  var daLine = document.getElementById(lineID);
+  var x1 = parseFloat(daLine.getAttribute('x1'));
+  var x2 = parseFloat(daLine.getAttribute('x2'));
+  var y = parseFloat(daLine.getAttribute('y1'));
+
+  var lineLength = Math.abs(x2-x1);
+  var mM = Math.abs(minMax[0]-minMax[1])
+  var prop = lineLength/mM;
+
+  for (var i = 0; i < tickArray.length; i++){
+    if (geo == 'circle'){}
+    if (geo == 'triangle'){}
+    if (geo == 'line'){
+      var nx =  1+ x1 + prop*(tickArray[i]-minMax[0])
+      var ny = y - tickSize
+      var svgElem = document.createElementNS(xmlns, geo);
+      svgElem.setAttributeNS(null, "id", 'y_'+tickArray[i]);
+      svgElem.setAttributeNS(null, "class", 'tick');
+      svgElem.setAttributeNS(null, "x1", nx);
+      svgElem.setAttributeNS(null, "y1", y);
+      svgElem.setAttributeNS(null, "x2", nx);
+      svgElem.setAttributeNS(null, "y2", ny);
+      daLine.parentElement.appendChild(svgElem)
+      if (text='text'){
+        var textElem = document.createElementNS(xmlns, 'text');
+        textElem.setAttributeNS(null,'x', nx); 
+        textElem.setAttributeNS(null,'y', ny-gap);
+        textElem.setAttributeNS(null,'font-size', tsize);
+        textElem.setAttributeNS(null,'class', 'tickText');
+        textElem.innerHTML = tickArray[i]
+        daLine.parentElement.appendChild(textElem)
+
+      }
+    }
+}
+}
+makeTicks('sliderLine', 'line', 3, [1690,2020], [1700,1800,1900,2000], 'text',5,1)
+
+       // if -50 is 1690 and 50 is 2020
         // but we have 33 decades 
         // 1/3.03 = 
         // (Math.trunc((dx+50)/3.03) * 10) + 1690
         // 0*3.34 = 0 + 1690
         // 1*3.34 = 
-        var iValue = -50;
-        document.getElementById('elG').setAttributeNS(null,'transform', 'translate(-50 0)')// make tha house be on the left
-        scrollerValue(iValue)
-        
-        let start = Date.now(); // remember start time
-
-      let timer = setInterval(function() {
+var iValue = -50;
+document.getElementById('elG').setAttributeNS(null,'transform', 'translate(-50 0)')// make tha house be on the left
+scrollerValue(iValue)
+var playClick = 0
+var timer;
+function playTimer(ps,iV) {
+  if (ps == 'pause'){clearInterval(timer);  changePauseBot('black'); changePlayBot('lightgray'); playClick = 0; return}
+  if (playClick == 1) {return}
+  changePauseBot('lightgray')
+  changePlayBot('black')
+  playClick = 1;
+  if(iV != undefined){iValue == iV}
+else {iValue = document.getElementById('elG').transform.baseVal.getItem(0).matrix.e}
+if (ps == 'start' & iValue>49) {iValue = -50;scrollerValue(iValue);}
+var start = Date.now(); // remember start time
+timer = setInterval(function() {
         // how much time passed from the start?
         let timePassed = Date.now() - start;
-
         if (timePassed >= 50*120) {
           clearInterval(timer); // finish the animation after 2 seconds
+          changePlayBot('lightgray')
+          changePauseBot('black')
+          playClick = 0;
           return;
         }
         iValue = iValue + 1
         if(iValue <= 50){
         document.getElementById('elG').setAttributeNS(null,'transform', 'translate(' + iValue + ' 0)')// make tha house be on the left
-        scrollerValue(iValue)}
+        scrollerValue(iValue)
+        if(iValue >=50) {
+          clearInterval(timer)
+          changePlayBot('lightgray')
+          changePauseBot('black')
+          playClick = 0;
+          }
+        }
         // draw the animation at the moment timePassed
         // draw(timePassed);
 
       }, 50);
+    }
 
+function changePlayBot(a) {
+  document.querySelectorAll('.play').forEach(e=>{
+    e.style.stroke = a
+    e.style.fill = a
+
+    })
+};
+function changePauseBot(a) {
+  document.querySelectorAll('.wideLine').forEach(e=>{
+    e.style.stroke = a
+    })
+};
+
+changePauseBot('lightgray')
+playTimer('start')
 // as timePassed goes from 0 to 2000
 // left gets values from 0px to 400px
-      
-    
+
 
       </script>
 </body>
