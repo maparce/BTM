@@ -11,7 +11,8 @@ var cartogram = {
         state: [], // an array with the names of the states 
         value: [], // an array with a values to determine for example size of svg
         },
-    border:30,
+    xBorder:30,
+    yBorder:30,
  
     spacing:10, // pixel size of spacing
     size:70, // pixel size of width, add other measurements for other shapes
@@ -43,17 +44,18 @@ var cartogram = {
             var boxWidth = divSVG.getBoundingClientRect().width
             var boxHeight = divSVG.getBoundingClientRect().height
             // var xmlns = "http://www.w3.org/2000/svg";
-            var stepW = Math.floor((boxWidth-(2*cartogram.border)-cartogram.size)/(cartogram.xy[0]-1))
-            var stepH = Math.floor((boxHeight-(2*cartogram.border)-cartogram.size)/(cartogram.xy[1]-1))
-            for (i = 0; i < cartogram.xy[0]; i++){ //numTicks -1  you want to eliminate the remainder 
-                for(j = 0; j <cartogram.xy[1]; j++){
-                    if (i== 0) {var xRect = cartogram.border} else {
-                        var xRect = i*stepW + cartogram.border ;
+            var stepW = Math.floor((boxWidth-(2*cartogram.xBorder)-cartogram.size)/(cartogram.xy[0]-1))
+            var stepH = Math.floor((boxHeight-(2*cartogram.yBorder)-cartogram.size)/(cartogram.xy[1]-1))
+            for (var i = 0; i < cartogram.xy[0]; i++){ //numTicks -1  you want to eliminate the remainder 
+                for(var j = 0; j <cartogram.xy[1]; j++){
+                    if (i== 0) {var xRect = cartogram.xBorder} else {
+                        var xRect = i*stepW + cartogram.xBorder ;
                     }
-                    if (j== 0) {var yRect = cartogram.border} else {
-                        var yRect = j*stepH + cartogram.border;
+                    if (j==0) {var yRect = cartogram.yBorder} else { // I changed this since the data had no first row and I wanted the data to start in the first row of the div
+                        var yRect = j*stepH + cartogram.yBorder;
                     }
-                    this.xyObject[i+","+j]=[xRect,yRect]}}
+                    ///// J + 1 IS TO SOLVE A PROBLEM IN THE DATA SO THE CARTOGRAM GOES UP
+                    this.xyObject[i+","+(j+1)]=[xRect,yRect]}} // CHANGE 
     },
     
     makeSVG: function(DivID) {
@@ -90,12 +92,13 @@ var cartogram = {
         cartogram.makeCoordinateObject(DivID);
         var xmlns = "http://www.w3.org/2000/svg";
         var divSVG = document.getElementById('svg_'+DivID)
-        cartogram.data.state.forEach((element, index) =>{ 
+        cartogram.data.state.forEach((element, index) =>{
+            if (element != 'HI' && element != 'PR') { // make an element of the cartogram object that has a section for eliminating by state. 
             var i = cartogram.data.x[index];
             var j = cartogram.data.y[index];
             var objectName = i+","+j
-            var xRect = cartogram.xyObject[objectName][0]
-            var yRect = cartogram.xyObject[objectName][1]
+            var xRect = cartogram.xyObject[objectName][0] 
+            var yRect = cartogram.xyObject[objectName][1] 
                 
                 var gElem = document.createElementNS(xmlns, 'g');
                 gElem.setAttributeNS(null,'class', element +'_cart_'); 
@@ -127,7 +130,7 @@ var cartogram = {
             
             //     }// end of i loop which is the x coordinate 
                     cartogram.centerText()
-                    }  ); //end for each 
+        } } ); //end for each 
     }
     ,
 

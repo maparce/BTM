@@ -23,32 +23,42 @@
         margin-top: 10px;
         text-align: center;
         padding: 0px;
+        color: white;
         /* font-size: 8vh;  */
       /* i need to put 10vh for vertical cellphone position */
     }
     #subTitleCarto{
         padding: 0px;
+        margin-top: 10px;
         margin-bottom: 5px;
+        color: rgb(171, 242, 247);
+
         text-align: center;}
+        
     
     #stateCarto{
         margin: 5px;
         text-align: left;
         margin-left: 10px;
+        color: white;
         /* font-size: 7vh;  */
     }
     #numberCarto{
         text-align: left;
         margin-left: 10px;
+        color: white;
         /* font-size: 6vh;  */
     }
     #lineDivision{
-        background-color: black;
+        background-color: rgb(63, 63, 63);
         height: 2px;
         margin: 5px;
     }
     .infoItem {
         margin: 5px;
+    }
+    body{
+        background-color:#212326;
     }
 </style>
 
@@ -63,7 +73,7 @@
 <!-- <div id= "test" style="background-color: #212326; position: absolute; width: 600px; height: 500px;"></div> -->
 <!-- <div id= "test" style="background-color: #212326; position: absolute; height: 100%; aspect-ratio: 1.2;"></div> -->
 <div id= "test" style="background-color: #212326; position: absolute; height: 400px; width: 300px;"></div>
-<div id= "cartoInfo" style="background-color: red; position: absolute; height: 400px; width: 300px; left: 300px;"></div>
+<div id= "cartoInfo" style="background-color: #212326; position: absolute; height: 400px; width: 300px; left: 300px;"></div>
 
 <!-- <div id= "info" style="background-color: #212326; position: absolute; left: 610px; width: 200px; height: 500px;"> -->
     <p style="color:white;">State</p> 
@@ -86,8 +96,10 @@
     cartogram.data.y = dataCarto.Y; // data with the y coordinate 
     cartogram.colorArray = ['#969696','#6F8CA6','#3C5973','#142740','#081526'], //set the color in increasing value // somethink is wrong with Oklahoma
     cartogram.colorClass = [0,9,19,30,56]; // set value of color less or equal than
-    cartogram.xy = [11,9]
-    cartogram.border = 15
+    cartogram.xy = [11,7]
+    cartogram.xBorder = 3
+    cartogram.yBorder = 10
+
 
     function onResize(divID, infoID) {
         // location.reload()
@@ -101,14 +113,14 @@
         {
             console.log('landscape')
             daDiv.style.height = window.innerHeight + 'px';
-            daDiv.style.width = window.innerHeight * 1.2 + 'px'
-            daDiv.style.left = (window.innerWidth - (window.innerHeight * 1.2)) + 'px'
+            daDiv.style.width = window.innerHeight * 1.5 + 'px'
+            daDiv.style.left = (window.innerWidth - (window.innerHeight * 1.5)) + 'px'
             daDiv.style.top = '0px'
             daDiv.zIndex = 100;
             // if you want the cartogram in the left change this
 
             infoDIV.style.height = window.innerHeight + 'px'
-            infoDIV.style.width = (window.innerWidth - (window.innerHeight * 1.2)) + 'px'
+            infoDIV.style.width = (window.innerWidth - (window.innerHeight * 1.5)) + 'px'
             infoDIV.style.top = '0px'
             infoDIV.style.left = '0px' // if you want the cartogram in the left change this
             infoDIV.zIndex = 0;
@@ -116,19 +128,19 @@
         } else {
             console.log('portrait') 
             daDiv.style.width = window.innerWidth + 'px';
-            daDiv.style.height = window.innerWidth * .833 + 'px'
-            daDiv.style.top = (window.innerHeight - (window.innerWidth * .833)) + 'px'
+            daDiv.style.height = window.innerWidth * .667 + 'px'
+            daDiv.style.top = (window.innerHeight - (window.innerWidth * .667)) + 'px'
             daDiv.style.left = '0px'
             daDiv.zIndex = 100;
             infoDIV.style.width = window.innerWidth + 'px'
-            infoDIV.style.height = (window.innerHeight - (window.innerWidth * .833)) + 'px'
+            infoDIV.style.height = (window.innerHeight - (window.innerWidth * .667)) + 'px'
             infoDIV.style.top = '0px'
             // infoDIV.style.top = window.innerWidth * .833 + 'px'
             infoDIV.style.left = '0px'
             // infoDiv.zIndex = 0;
             }
 
-            cartogram.size = document.getElementById(divID).getBoundingClientRect().width * .078 
+            cartogram.size = document.getElementById(divID).getBoundingClientRect().width * .085 
             cartogram.fontSize = cartogram.size/3 //'20'//'20'
             cartogram.makeRectangle(divID)
             mL.fontSize = cartogram.fontSize
