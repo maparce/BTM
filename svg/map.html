@@ -167,7 +167,7 @@
   <script src="../js/removeTileLines.js"></script>
 <div id="largeDiv">
   <div id="titleDiv">
-    <div id="daTitle">Towns built before:</div>
+    <div id="daTitle">Towns established before:</div>
     </div>
     <div id="daMap"></div>
     <div id="container">
@@ -338,7 +338,7 @@
                   <g transform= 'translate(0 -4)'>
                     	<!-- <circle class="st3" cx="87.6" cy="213.9" r="1.7"></circle>	 -->
                       <!-- <circle class="st3" cx="197.7" cy="213.9" r="1.7"></circle> -->
-                      <!-- <text id="sliderText" x="104" y="222" font-size=".5em">Towns built before: </text> -->
+                      <!-- <text id="sliderText" x="104" y="222" font-size=".5em">Towns established before: </text> -->
                       
                       <circle id="iBot" class="clickable incorporated" cx="210" cy="208" r="4" onmousdown='iBot(evt)'></circle>
                       <!-- <rect   id="iBotRect" class="clickable incorporated" x="210" y="208" width="11" height="10.4"></rect> -->
@@ -371,7 +371,7 @@
     <script>
         function fillInfo(index){
           var existing = BT.features[index].properties["Existing"]
-          if (existing == 'No') {existing = ' *not existing'}
+          if (existing == 'No') {existing = ' *no longer existing'}
           else {existing = ''}
           var yInc = BT.features[index].properties["YearInc"]
           var incorporated = BT.features[index].properties['Incorporated']
@@ -391,8 +391,8 @@
 
         function scrollerValue(dx){
             var decadeNum = ((Math.trunc((dx+50)/3.03) * 10) + 1690)
-            // document.getElementById('sliderText').innerHTML = "Towns built before: " 
-            document.getElementById('daTitle').innerHTML = "Towns built before: " 
+            // document.getElementById('sliderText').innerHTML = "Towns established before: " 
+            document.getElementById('daTitle').innerHTML = "Towns established before: " 
             + decadeNum
             decadeLessThan(decadeNum)
             sValue = decadeNum
