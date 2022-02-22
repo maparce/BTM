@@ -111,6 +111,7 @@
             background-color:white;
             opacity: .85;
             width: 300px;
+            font-size: 20px;
     }
     .tick{
       stroke: black;
@@ -448,8 +449,11 @@ const svgIcon = L.divIcon({
           removeAllMarkers(markerDecadeArrayUNC)
           markerDecadeArrayINC = []
           markerDecadeArrayUNC = []
+          var d = 0
           BT.features.forEach((e, index) =>{
-            var d = parseInt(e.properties.DecadeEst.split('-')[0])
+            //console.log(index, e.properties.DecadeEst)
+            if (e.properties.DecadeEst == null) {d = 1900} else {
+             d = parseInt(e.properties.DecadeEst.split('-')[0])}
             if(d<decade){
               // console.log(e.geometry.coordinates[0])
               // var marker = L.circleMarker([e.geometry.coordinates[1], e.geometry.coordinates[0]])
