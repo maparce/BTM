@@ -13,15 +13,17 @@ var mL = {
         // from https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
         var newDiv = document.createElement("div");
         newDiv.setAttribute('id','titleCarto')
-        newDiv.innerHTML = 'Black Towns'
-        newDiv.style.fontSize = this.fontSize*2.5 + 'px'
+        newDiv.innerHTML = 'Number of Black Towns Identified By State'
+        newDiv.style.fontSize = this.fontSize*1.5 + 'px'
         daDIV.appendChild(newDiv)
         newDiv = document.createElement("div");
         newDiv.setAttribute('id','subTitleCarto')
-        newDiv.innerHTML = 'United States, Canada, Mexico and Puerto Rico'
+        newDiv.innerHTML = 'Click a state for more information'//'United States, Canada, Mexico and Puerto Rico'
         newDiv.style.fontSize = .75*this.fontSize + 'px'
         daDIV.appendChild(newDiv)
-
+        if (mL.clicked == 1){newDiv.style.color = 'black'
+                            newDiv.style.opacity = .5   
+                            }
 
         newDiv = document.createElement("div");
         newDiv.setAttribute('id','stateCarto')
@@ -33,7 +35,7 @@ var mL = {
         newDiv.setAttribute('id','numberCarto')
         if (mL.clicked > 0){newDiv.innerHTML = 'Number of Towns: ' + this.numberOfStates}
         else{newDiv.innerHTML = '</br>'}
-        newDiv.style.fontSize = this.fontSize*1.5 + 'px'
+        newDiv.style.fontSize = this.fontSize*1.15 + 'px'
         daDIV.appendChild(newDiv)
         
         newDiv = document.createElement("div");
