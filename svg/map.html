@@ -403,12 +403,23 @@
         }
     </script>
     <script>
-const svgIcon = L.divIcon({
+const svgIconLarge = L.divIcon({
   html: `<svg class="mySVGicon" aria-labelledby="locationIconTitle" color="#000000" fill="none" height="48px" role="img" stroke="#000000" stroke-linecap="square" stroke-linejoin="miter" stroke-width="1" viewBox="0 0 24 24" width="48px" xmlns="http://www.w3.org/2000/svg"><title id="locationIconTitle"/><path id="svgIconTag" d="M12,21 C16,16.8 18,12.8 18,9 C18,5.6862915 15.3137085,3 12,3 C8.6862915,3 6,5.6862915 6,9 C6,12.8 8,16.8 12,21 Z"/><circle id="svgIconCircle" cx="12" cy="9" r="1"/></svg>`,  className: "",
-  iconSize: [10, 10], //I tried changing these values to make the icons smaller but it did not change the size.
-  iconAnchor: [12, 40],
+  iconSize: [48, 48], // [10I tried changing these values to make the icons smaller but it did not change the size.
+  iconAnchor: [24, 46],
 });
 
+const svgIconMedium = L.divIcon({
+  html: `<svg class="mySVGicon" aria-labelledby="locationIconTitle" color="#000000" fill="none" height="24px" role="img" stroke="#000000" stroke-linecap="square" stroke-linejoin="miter" stroke-width="1" viewBox="0 0 24 24" width="48px" xmlns="http://www.w3.org/2000/svg"><title id="locationIconTitle"/><path id="svgIconTag" d="M12,21 C16,16.8 18,12.8 18,9 C18,5.6862915 15.3137085,3 12,3 C8.6862915,3 6,5.6862915 6,9 C6,12.8 8,16.8 12,21 Z"/><circle id="svgIconCircle" cx="12" cy="9" r="1"/></svg>`,  className: "",
+  iconSize: [24, 24], // [10I tried changing these values to make the icons smaller but it did not change the size.
+  iconAnchor: [24, 23],
+});
+
+const svgIcon = L.divIcon({
+  html: `<svg class="mySVGicon" aria-labelledby="locationIconTitle" color="#000000" fill="none" height="12px" role="img" stroke="#000000" stroke-linecap="square" stroke-linejoin="miter" stroke-width="1" viewBox="0 0 24 24" width="48px" xmlns="http://www.w3.org/2000/svg"><title id="locationIconTitle"/><path id="svgIconTag" d="M12,21 C16,16.8 18,12.8 18,9 C18,5.6862915 15.3137085,3 12,3 C8.6862915,3 6,5.6862915 6,9 C6,12.8 8,16.8 12,21 Z"/><circle id="svgIconCircle" cx="12" cy="9" r="1"/></svg>`,  className: "",
+  iconSize: [12, 12], // [10I tried changing these values to make the icons smaller but it did not change the size.
+  iconAnchor: [24, 12],
+});
 
       var map = L.map('daMap', { attributionControl:false }).setView([39.5, -100], 3);      
       var daTile = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', 
@@ -434,7 +445,11 @@ const svgIcon = L.divIcon({
         var marker = undefined;
         var markerDecadeArrayINC = []
         var markerDecadeArrayUNC = []
+        var currentDecade = 1690;
         function decadeLessThan(decade, opt){
+          currentDecade = decade;
+          // console.log(currentDecade,"opt",opt)
+          
           if (sValue == decade)
           { 
             if (opt == "incOff")
@@ -450,33 +465,39 @@ const svgIcon = L.divIcon({
           markerDecadeArrayUNC = []
           var d = 0
           BT.features.forEach((e, index) =>{
-            //console.log(index, e.properties.DecadeEst)
             if (e.properties.DecadeEst == null) {d = 1900} else {
              d = parseInt(e.properties.DecadeEst.split('-')[0])}
             if(d<decade){
-              // console.log(e.geometry.coordinates[0])
               // var marker = L.circleMarker([e.geometry.coordinates[1], e.geometry.coordinates[0]])
-              var marker = L.marker([e.geometry.coordinates[1], e.geometry.coordinates[0]], { icon: svgIcon })//.addTo(map);
+              var svgIconZoom = svgIconLarge
+              if (map.getZoom() < 8){
+                svgIconZoom = svgIconMedium
+              }
+              if (map.getZoom() < 6){
+                svgIconZoom = svgIcon
+              }
+              
+              var marker = L.marker([e.geometry.coordinates[1], e.geometry.coordinates[0]], { icon: svgIconZoom })//.addTo(map);
               // marker.properies.name = "x";
-              // console.log(marker)
               
               marker.on("click", markerOnClick)
               marker.on("mouseover", markerOnClick)
               marker.index = index;
               // marker.addTo(map)
-              // console.log(e.properties.Incorporated)
               if (e.properties.Incorporated == "Yes" & inc==1) {
                 marker.addTo(map)
                 marker._icon.getElementsByClassName('mySVGicon')[0].style.fill = '#464545'
+                // marker._icon.getElementsByClassName('mySVGicon')[0].style.height = '5px'
+
                 // marker.options.color = 'dark blue'
                 
-              // console.log(marker)
                 markerDecadeArrayINC.push(marker)
                 }
               
               else if (unc == 1){
                 marker.addTo(map)
                 marker._icon.getElementsByClassName('mySVGicon')[0].style.fill = '#301f7e'
+                // marker._icon.getElementsByClassName('mySVGicon')[0].style = '5px'
                 markerDecadeArrayUNC.push(marker)
                   }
 
@@ -593,6 +614,15 @@ function changePauseBot(a) {
 
 changePauseBot('lightgray')
 playTimer('start')
+map.on('zoomstart', function(e) { 
+  decadeLessThan(currentDecade) })
+//for debugging the svg icon 
+
+// map.setView([46.09622, -93.70435],20)
+// var mT = L.marker([46.09622, -93.70435], { icon: svgIcon }).addTo(map)
+// var mT2 = L.marker([46.09622, -93.70435], { icon: svgIconLarge }).addTo(map)
+// var mT3 = L.marker([46.09622, -93.70435]).addTo(map)
+
 // as timePassed goes from 0 to 2000
 // left gets values from 0px to 400px
 
