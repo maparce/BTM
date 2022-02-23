@@ -19,11 +19,37 @@
         margin: 0;
         padding: 0;
         right: 0px;
+        height: 100%;
+        width: 100%;
+        position: relative;
+
   }
+  #titleDiv{
+      text-align: center;
+      font-size: x-large;
+      position: absolute;
+      /* background-color: aquamarine; */
+      width: 100%;  
+      height: 30px;  
+      top: 1%;
+      padding: 0%;
+      margin: auto;
+      z-index: 9999;
+    }
+    #daTitle{
+            /* left:60%; */
+            margin: auto; 
+            background-color:white;
+            opacity: .85;
+            width: 300px;
+            font-size: 20px;
+    }
   #daMap {
         background-color: #301f7e;
         width: 100%;
-        height: 400px;
+        height: 330px;
+        /* left: 30%; */
+        /* width: 70%; */
         /* width: 100%;
         height: 400px; */
         position: relative;
@@ -33,7 +59,6 @@
 
     }
     #container {
-        /* grid-template-columns: repeat(4, 1fr); */
         display: grid;
         width: 100%;
         /* width: 330px; */
@@ -43,9 +68,8 @@
         opacity: 0.85; 
         /* margin: auto // important for centering  */
         margin: auto;
-        top: 350px;
         position:absolute; 
-        /* bottom:-10px; */
+        /* top: 85%; */
         z-index: 999;
     }
     #svgDiv{
@@ -98,25 +122,7 @@
 
     }
 
-    #titleDiv{
-      text-align: center;
-      font-size: x-large;
-      position: absolute;
-      /* background-color: aquamarine; */
-      width: 100%;  
-      height: 30px;  
-      top: 1%;
-      padding: 0%;
-      margin: auto;
-      z-index: 9999;
-    }
-    #daTitle{
-            margin: auto; 
-            background-color:white;
-            opacity: .85;
-            width: 300px;
-            font-size: 20px;
-    }
+    
     .tick{
       stroke: black;
     }
@@ -151,6 +157,10 @@
     #svgIconCircle{
       stroke:pink
 
+    }
+    #infoContainer{
+      position: absolute;
+      top:350px
     }
    /* 
    fill: #301f7e; color incorporated
@@ -358,7 +368,8 @@
                   </div> -->
               
   </div>
-</div>
+</div> 
+<!-- end largeDiv -->
 <div id="infoContainer" >
   <div id="infoName" class="infoTab"></div>
   <div id="infoState" class="infoTab"></div>
@@ -371,6 +382,7 @@
 
 </div>
     <script>
+      
         function fillInfo(index){
           var existing = BT.features[index].properties["Existing"]
           if (existing == 'No') {existing = ' *no longer existing'}
@@ -420,8 +432,18 @@ const svgIcon = L.divIcon({
   iconSize: [12, 12], // [10I tried changing these values to make the icons smaller but it did not change the size.
   iconAnchor: [24, 12],
 });
+// this is to solve a bug in leaflet that depending on the screen the map may be shifted
+      var hasTouchedMap = 0
+      var mapCenter = [39.5, -100]
+      var mapCenterLandscape = [39.5, -77]
 
-      var map = L.map('daMap', { attributionControl:false }).setView([39.5, -100], 3);      
+if (window.innerHeight/window.innerWidth < 1) {
+  var map = L.map('daMap', { attributionControl:false }).setView(mapCenterLandscape, 3);      
+} 
+else {
+  var map = L.map('daMap', { attributionControl:false }).setView(mapCenter, 3);      
+
+}
       var daTile = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', 
         {maxZoom: 19,  })
         daTile.addTo(map)
@@ -611,7 +633,6 @@ function changePauseBot(a) {
     })
 };
 
-
 changePauseBot('lightgray')
 playTimer('start')
 map.on('zoomstart', function(e) { 
@@ -625,10 +646,33 @@ map.on('zoomstart', function(e) {
 
 // as timePassed goes from 0 to 2000
 // left gets values from 0px to 400px
+function onResizeMap(){
+  if (window.innerHeight/window.innerWidth < 1) {
+    'landscape'
+  document.getElementById('largeDiv').style.width = window.innerWidth *.65 + 'px'
+  document.getElementById('largeDiv').style.height = window.innerHeight + 'px'
+  document.getElementById('infoContainer').style.top = '10px'
+  document.getElementById('infoContainer').style.left = document.getElementById('largeDiv').getBoundingClientRect().right + 'px'
+  
+}
+  else {
+  document.getElementById('largeDiv').style.width = '100%'
+  document.getElementById('largeDiv').style.height = '100%'
+  document.getElementById('infoContainer').style.top = document.getElementById('container').getBoundingClientRect().bottom + 'px'
+  document.getElementById('infoContainer').style.left = '0px'
+  
+}
+}
+window.addEventListener("resize", function(event) {
+    onResizeMap()
+    // location.reload()
+});
 
-
-
-
+onResizeMap()
+// this.map.on("moveend", function(s){
+//   console.log('hola')
+//   hasTouchedMap = 1;
+// });
 
 
       </script>

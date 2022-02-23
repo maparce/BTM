@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;1,300&display=swap" rel="stylesheet">
   </head>
 <style>
   #largeDiv{
@@ -15,11 +19,37 @@
         margin: 0;
         padding: 0;
         right: 0px;
-  }
-  #daMap {
-        background-color: black;
+        height: 100%;
         width: 100%;
-        height: 400px;
+        position: relative;
+
+  }
+  #titleDiv{
+      text-align: center;
+      font-size: x-large;
+      position: absolute;
+      /* background-color: aquamarine; */
+      width: 100%;  
+      height: 30px;  
+      top: 1%;
+      padding: 0%;
+      margin: auto;
+      z-index: 9999;
+    }
+    #daTitle{
+            /* left:60%; */
+            margin: auto; 
+            background-color:white;
+            opacity: .85;
+            width: 300px;
+            font-size: 20px;
+    }
+  #daMap {
+        background-color: #301f7e;
+        width: 100%;
+        height: 330px;
+        /* left: 30%; */
+        /* width: 70%; */
         /* width: 100%;
         height: 400px; */
         position: relative;
@@ -29,7 +59,6 @@
 
     }
     #container {
-        /* grid-template-columns: repeat(4, 1fr); */
         display: grid;
         width: 100%;
         /* width: 330px; */
@@ -39,9 +68,8 @@
         opacity: 0.85; 
         /* margin: auto // important for centering  */
         margin: auto;
-        top: 350px;
         position:absolute; 
-        /* bottom:-10px; */
+        /* top: 85%; */
         z-index: 999;
     }
     #svgDiv{
@@ -54,8 +82,8 @@
 
     }
     .incorporated{
-        stroke: none;
-        fill: darkblue;
+        stroke: black;
+        fill: #464545;
         stroke-linecap:round;
         stroke-width:.2;
         stroke-dasharray:1,1;
@@ -63,7 +91,7 @@
     }
     .unincorporated{
       stroke: none;
-        fill: black;
+        fill: #301f7e;
         stroke-linecap:round;
         stroke-width:.2;
         stroke-dasharray:1,1;
@@ -94,24 +122,7 @@
 
     }
 
-    #titleDiv{
-      text-align: center;
-      font-size: x-large;
-      position: absolute;
-      /* background-color: aquamarine; */
-      width: 100%;  
-      height: 30px;  
-      top: 1%;
-      padding: 0%;
-      margin: auto;
-      z-index: 9999;
-    }
-    #daTitle{
-            margin: auto; 
-            background-color:white;
-            opacity: .85;
-            width: 300px;
-    }
+    
     .tick{
       stroke: black;
     }
@@ -138,35 +149,37 @@
       overflow: scroll;
     }
 
-    /* #infoName { grid-area: name; }
-    #infoState { grid-area: state; }
-    #infoYearEst { grid-area: year; }
-    #infoExisting { grid-area: existing; }
-    #infoInc { grid-area: inc; }
-    #infoYearInc { grid-area: yearinc; }
-    #infoSource { grid-area: source; }
+    #svgIconTag{
+      stroke:orange
 
-    #infoContainer {
-     display: grid;
-    grid-template-areas:
-    'name name name'
-    'state state state'
-    'inc yearinc yearinc'
-    'source source source'
-    'source source source';
-      gap: 3px;
-      background-color: #2196F3;
-      padding: 5px;
-    } */
+    }
+
+    #svgIconCircle{
+      stroke:pink
+
+    }
+    #infoContainer{
+      position: absolute;
+      top:350px
+    }
+   /* 
+   fill: #301f7e; color incorporated
+    fill: #464545;color for unincorporated
+
+   '#464545' this the color for unincorporated
+   */
 
 </style>
 <body>
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
   crossorigin=""></script>
+  <script src="../js/removeTileLines.js"></script>
+  <script src="../data/BT.js"></script>
+
 <div id="largeDiv">
   <div id="titleDiv">
-    <div id="daTitle">Towns built before:</div>
+    <div id="daTitle">Towns established before:</div>
     </div>
     <div id="daMap"></div>
     <div id="container">
@@ -218,7 +231,7 @@
                     if (evt.target.classList.contains('incorporated'))
                     { 
                       if (inc == 0)
-                      { evt.target.style.fill = 'dark blue';
+                      { evt.target.style.fill = '#464545';
                         evt.target.style.stroke = 'none';
                         inc = 1
                         decadeLessThan(sValue)
@@ -226,7 +239,7 @@
                       }
                       if (inc == 1) {
                     evt.target.style.fill = 'none'
-                    evt.target.style.stroke = 'dark blue'
+                    evt.target.style.stroke = '#000000'
                     inc = 0
                     decadeLessThan(sValue, 'incOff')
                     return }
@@ -235,7 +248,7 @@
                     if (evt.target.classList.contains('unincorporated'))
                     {
                       if (unc == 0)
-                      { evt.target.style.fill = 'black';
+                      { evt.target.style.fill = '#301f7e';
                         evt.target.style.stroke = 'none';
                         unc = 1
                         decadeLessThan(sValue)
@@ -337,7 +350,7 @@
                   <g transform= 'translate(0 -4)'>
                     	<!-- <circle class="st3" cx="87.6" cy="213.9" r="1.7"></circle>	 -->
                       <!-- <circle class="st3" cx="197.7" cy="213.9" r="1.7"></circle> -->
-                      <!-- <text id="sliderText" x="104" y="222" font-size=".5em">Towns built before: </text> -->
+                      <!-- <text id="sliderText" x="104" y="222" font-size=".5em">Towns established before: </text> -->
                       
                       <circle id="iBot" class="clickable incorporated" cx="210" cy="208" r="4" onmousdown='iBot(evt)'></circle>
                       <!-- <rect   id="iBotRect" class="clickable incorporated" x="210" y="208" width="11" height="10.4"></rect> -->
@@ -355,7 +368,8 @@
                   </div> -->
               
   </div>
-</div>
+</div> 
+<!-- end largeDiv -->
 <div id="infoContainer" >
   <div id="infoName" class="infoTab"></div>
   <div id="infoState" class="infoTab"></div>
@@ -368,9 +382,10 @@
 
 </div>
     <script>
+      
         function fillInfo(index){
           var existing = BT.features[index].properties["Existing"]
-          if (existing == 'No') {existing = ' *not existing'}
+          if (existing == 'No') {existing = ' *no longer existing'}
           else {existing = ''}
           var yInc = BT.features[index].properties["YearInc"]
           var incorporated = BT.features[index].properties['Incorporated']
@@ -390,8 +405,8 @@
 
         function scrollerValue(dx){
             var decadeNum = ((Math.trunc((dx+50)/3.03) * 10) + 1690)
-            // document.getElementById('sliderText').innerHTML = "Towns built before: " 
-            document.getElementById('daTitle').innerHTML = "Towns built before: " 
+            // document.getElementById('sliderText').innerHTML = "Towns established before: " 
+            document.getElementById('daTitle').innerHTML = "Towns established before: " 
             + decadeNum
             decadeLessThan(decadeNum)
             sValue = decadeNum
@@ -399,22 +414,40 @@
             // console.log(dx)
         }
     </script>
-    <script src="../data/BT.js"></script>
     <script>
-      var map = L.map('daMap', { attributionControl:false }).setView([39.5, -100], 3);
-      var daTile = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-	maxZoom: 19,  })
+const svgIconLarge = L.divIcon({
+  html: `<svg class="mySVGicon" aria-labelledby="locationIconTitle" color="#000000" fill="none" height="48px" role="img" stroke="#000000" stroke-linecap="square" stroke-linejoin="miter" stroke-width="1" viewBox="0 0 24 24" width="48px" xmlns="http://www.w3.org/2000/svg"><title id="locationIconTitle"/><path id="svgIconTag" d="M12,21 C16,16.8 18,12.8 18,9 C18,5.6862915 15.3137085,3 12,3 C8.6862915,3 6,5.6862915 6,9 C6,12.8 8,16.8 12,21 Z"/><circle id="svgIconCircle" cx="12" cy="9" r="1"/></svg>`,  className: "",
+  iconSize: [48, 48], // [10I tried changing these values to make the icons smaller but it did not change the size.
+  iconAnchor: [24, 46],
+});
+
+const svgIconMedium = L.divIcon({
+  html: `<svg class="mySVGicon" aria-labelledby="locationIconTitle" color="#000000" fill="none" height="24px" role="img" stroke="#000000" stroke-linecap="square" stroke-linejoin="miter" stroke-width="1" viewBox="0 0 24 24" width="48px" xmlns="http://www.w3.org/2000/svg"><title id="locationIconTitle"/><path id="svgIconTag" d="M12,21 C16,16.8 18,12.8 18,9 C18,5.6862915 15.3137085,3 12,3 C8.6862915,3 6,5.6862915 6,9 C6,12.8 8,16.8 12,21 Z"/><circle id="svgIconCircle" cx="12" cy="9" r="1"/></svg>`,  className: "",
+  iconSize: [24, 24], // [10I tried changing these values to make the icons smaller but it did not change the size.
+  iconAnchor: [24, 23],
+});
+
+const svgIcon = L.divIcon({
+  html: `<svg class="mySVGicon" aria-labelledby="locationIconTitle" color="#000000" fill="none" height="12px" role="img" stroke="#000000" stroke-linecap="square" stroke-linejoin="miter" stroke-width="1" viewBox="0 0 24 24" width="48px" xmlns="http://www.w3.org/2000/svg"><title id="locationIconTitle"/><path id="svgIconTag" d="M12,21 C16,16.8 18,12.8 18,9 C18,5.6862915 15.3137085,3 12,3 C8.6862915,3 6,5.6862915 6,9 C6,12.8 8,16.8 12,21 Z"/><circle id="svgIconCircle" cx="12" cy="9" r="1"/></svg>`,  className: "",
+  iconSize: [12, 12], // [10I tried changing these values to make the icons smaller but it did not change the size.
+  iconAnchor: [24, 12],
+});
+// this is to solve a bug in leaflet that depending on the screen the map may be shifted
+      var hasTouchedMap = 0
+      var mapCenter = [39.5, -100]
+      var mapCenterLandscape = [39.5, -77]
+
+if (window.innerHeight/window.innerWidth < 1) {
+  var map = L.map('daMap', { attributionControl:false }).setView(mapCenterLandscape, 3);      
+} 
+else {
+  var map = L.map('daMap', { attributionControl:false }).setView(mapCenter, 3);      
+
+}
+      var daTile = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', 
+        {maxZoom: 19,  })
         daTile.addTo(map)
         var markerArray = []
-        // function addMarkers(){
-        //     var xy = BT.features[0].geometry.coordinates
-        //     var marker = L.marker([xy[1],xy[0]]);
-        //     // maker.on('mouseover', function() {console.log('hola')})
-        //     marker.on("mouseover", markerOnClick)
-        //     markerArray.push(marker)
-        //     marker.addTo(map)
-        // }
-
         function markerOnClick(e){
           fillInfo(e.target.index)
           // console.log(BT.features[e.target.index].properties["Town Name"])
@@ -434,7 +467,11 @@
         var marker = undefined;
         var markerDecadeArrayINC = []
         var markerDecadeArrayUNC = []
+        var currentDecade = 1690;
         function decadeLessThan(decade, opt){
+          currentDecade = decade;
+          // console.log(currentDecade,"opt",opt)
+          
           if (sValue == decade)
           { 
             if (opt == "incOff")
@@ -448,26 +485,43 @@
           removeAllMarkers(markerDecadeArrayUNC)
           markerDecadeArrayINC = []
           markerDecadeArrayUNC = []
+          var d = 0
           BT.features.forEach((e, index) =>{
-            var d = parseInt(e.properties.DecadeEst.split('-')[0])
+            if (e.properties.DecadeEst == null) {d = 1900} else {
+             d = parseInt(e.properties.DecadeEst.split('-')[0])}
             if(d<decade){
-              // console.log(e.geometry.coordinates[0])
-              var marker = L.circleMarker([e.geometry.coordinates[1], e.geometry.coordinates[0]])
+              // var marker = L.circleMarker([e.geometry.coordinates[1], e.geometry.coordinates[0]])
+              var svgIconZoom = svgIconLarge
+              if (map.getZoom() < 8){
+                svgIconZoom = svgIconMedium
+              }
+              if (map.getZoom() < 6){
+                svgIconZoom = svgIcon
+              }
+              
+              var marker = L.marker([e.geometry.coordinates[1], e.geometry.coordinates[0]], { icon: svgIconZoom })//.addTo(map);
               // marker.properies.name = "x";
-              // console.log(marker)
+              
               marker.on("click", markerOnClick)
               marker.on("mouseover", markerOnClick)
               marker.index = index;
-              if(e.properties.Incorporated == "Yes" & inc==1) {marker.options.color = 'dark blue'
-              marker.addTo(map)
-              markerDecadeArrayINC.push(marker)
+              // marker.addTo(map)
+              if (e.properties.Incorporated == "Yes" & inc==1) {
+                marker.addTo(map)
+                marker._icon.getElementsByClassName('mySVGicon')[0].style.fill = '#464545'
+                // marker._icon.getElementsByClassName('mySVGicon')[0].style.height = '5px'
+
+                // marker.options.color = 'dark blue'
+                
+                markerDecadeArrayINC.push(marker)
                 }
               
-              else if (unc == 1){marker.options.color = 'black'
-              marker.addTo(map)
-              markerDecadeArrayUNC.push(marker)
+              else if (unc == 1){
+                marker.addTo(map)
+                marker._icon.getElementsByClassName('mySVGicon')[0].style.fill = '#301f7e'
+                // marker._icon.getElementsByClassName('mySVGicon')[0].style = '5px'
+                markerDecadeArrayUNC.push(marker)
                   }
-                  // debugger;
 
               // You could add the pupup here using previous tutorials and decide the style too
               // it is called a marker but it is really a circle
@@ -542,7 +596,7 @@ var start = Date.now(); // remember start time
 timer = setInterval(function() {
         // how much time passed from the start?
         let timePassed = Date.now() - start;
-        if (timePassed >= 50*120) {
+        if (timePassed >= 100*120) {
           clearInterval(timer); // finish the animation after 2 seconds
           changePlayBot('lightgray')
           changePauseBot('black')
@@ -563,7 +617,7 @@ timer = setInterval(function() {
         // draw the animation at the moment timePassed
         // draw(timePassed);
 
-      }, 50);
+      }, 100);
     }
 
 function changePlayBot(a) {
@@ -581,8 +635,44 @@ function changePauseBot(a) {
 
 changePauseBot('lightgray')
 playTimer('start')
+map.on('zoomstart', function(e) { 
+  decadeLessThan(currentDecade) })
+//for debugging the svg icon 
+
+// map.setView([46.09622, -93.70435],20)
+// var mT = L.marker([46.09622, -93.70435], { icon: svgIcon }).addTo(map)
+// var mT2 = L.marker([46.09622, -93.70435], { icon: svgIconLarge }).addTo(map)
+// var mT3 = L.marker([46.09622, -93.70435]).addTo(map)
+
 // as timePassed goes from 0 to 2000
 // left gets values from 0px to 400px
+function onResizeMap(){
+  if (window.innerHeight/window.innerWidth < 1) {
+    'landscape'
+  document.getElementById('largeDiv').style.width = window.innerWidth *.65 + 'px'
+  document.getElementById('largeDiv').style.height = window.innerHeight + 'px'
+  document.getElementById('infoContainer').style.top = '10px'
+  document.getElementById('infoContainer').style.left = document.getElementById('largeDiv').getBoundingClientRect().right + 'px'
+  
+}
+  else {
+  document.getElementById('largeDiv').style.width = '100%'
+  document.getElementById('largeDiv').style.height = '100%'
+  document.getElementById('infoContainer').style.top = document.getElementById('container').getBoundingClientRect().bottom + 'px'
+  document.getElementById('infoContainer').style.left = '0px'
+  
+}
+}
+window.addEventListener("resize", function(event) {
+    onResizeMap()
+    // location.reload()
+});
+
+onResizeMap()
+// this.map.on("moveend", function(s){
+//   console.log('hola')
+//   hasTouchedMap = 1;
+// });
 
 
       </script>
