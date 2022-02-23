@@ -5,6 +5,15 @@ body {
     background-color: #010221;
   }
 
+p {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: normal;
+  /* font-size: 56px; */
+  /* color: rgb(192, 199, 199); */
+  position: relative;
+  text-align: left;
+}
+
 img {
     overflow: hidden;
 }
