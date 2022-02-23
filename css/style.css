@@ -24,7 +24,7 @@ img {
         width: 100%;
         max-width: 72rem;
         min-width: 320px;
-        height: 800px;
+        height: 650px;
         /* min-height: 50vh; */
         grid-template-columns: repeat(4, 1fr);
         gap: 1px;
@@ -130,7 +130,7 @@ img {
     color: #f2f2f2;
     font-size: 15px;
     padding: 8px 12px;
-    position: absolute;
+    position: relative;
     bottom: 8px;
     width: 100%;
     text-align: center;
