@@ -13,55 +13,80 @@
     #test{
         padding: 0;
         margin: 0;
-        left: 0;
+        /* left: 0; */
         top: 0;
+        z-index: 1;
     }
     #cartoInfo{
         overflow: scroll
     }
     #titleCarto{
-        margin: 10px;
+        margin-top: 10px;
         text-align: center;
-        font-size: 8vh; 
+        padding: 0px;
+        color: white;
+        /* font-size: 8vh;  */
       /* i need to put 10vh for vertical cellphone position */
     }
+    #subTitleCarto{
+        padding: 0px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        color: rgb(171, 242, 247);
+
+        text-align: center;}
+        
+    
     #stateCarto{
         margin: 5px;
         text-align: left;
         margin-left: 10px;
-        font-size: 7vh; 
+        color: white;
+        /* font-size: 7vh;  */
     }
     #numberCarto{
         text-align: left;
         margin-left: 10px;
-        font-size: 6vh; 
+        color: white;
+        /* position: absolute; */
+        z-index: 0;
     }
     #lineDivision{
-        background-color: black;
+        background-color: rgb(63, 63, 63);
         height: 2px;
         margin: 5px;
+        /* position: absolute; */
+        /* z-index: 100; */
+
     }
     .infoItem {
         margin: 5px;
+    }
+    body{
+        background-color:#212326;
     }
 </style>
 
 </head>
 <body>
+    <!-- Add to svgs: On hover display state name and number of towns identified// -->
+<!-- Add title: Number of Black Towns Identified By State -->
+<!-- Add legend (5 classes): - (1) None; (2) 1-9; (3) 10-19; (4) 20-29; (5) 30 or more -->
 <!-- <div id= "test1" style="background-color: burlywood; position: absolute; left: 50%; width: 100%; height: 300px;"></div> -->
 <!-- <h3>7 x 7 squares</h3> -->
 <!-- //on hover display state name and number of towns identified// -->
 <!-- <div id= "test" style="background-color: #212326; position: absolute; width: 600px; height: 500px;"></div> -->
 <!-- <div id= "test" style="background-color: #212326; position: absolute; height: 100%; aspect-ratio: 1.2;"></div> -->
-<div id= "test" style="background-color: #212326; position: absolute; height: 400px; width: 300px;"></div>
-<div id= "cartoInfo" style="background-color: red; position: absolute; height: 400px; width: 300px; left: 300px;"></div>
+<div id= "test" style="background-color: #212326; position: absolute;"></div>
+<div id= "cartoInfo" style="background-color: #212326; position: absolute; "></div>
+<div id= "cartoList" style="background-color:  #212326; position: absolute;width: 600px"></div>
 
 <!-- <div id= "info" style="background-color: #212326; position: absolute; left: 610px; width: 200px; height: 500px;"> -->
     <p style="color:white;">State</p> 
     <!-- center and size -->
     <br>
     <br>
-    <p style="color:white;">Number of Towns Identified</p>
+    <p style="color:white;">Number of Towns</p>
     <p style="color:white;">Town List</p>
     <!-- each town will have a link to map or images or page-->
 
@@ -76,45 +101,87 @@
     cartogram.data.x = dataCarto.X; // data with the x coordinate
     cartogram.data.y = dataCarto.Y; // data with the y coordinate 
     cartogram.colorArray = ['#969696','#6F8CA6','#3C5973','#142740','#081526'], //set the color in increasing value // somethink is wrong with Oklahoma
-    cartogram.colorClass = [0,1,10,20,30]; // set value of color less or equal than
-    cartogram.xy = [11,9]
-    cartogram.border = 15
+    cartogram.colorClass = [0,9,19,30,56]; // set value of color less or equal than
+    cartogram.xy = [11,7]
+    cartogram.xBorder = 3
+    cartogram.yBorder = 10
 
-    function onResize(divID, infoID) {
+
+    function onResize(divID, infoID, listID) {
+        // location.reload()
         var daDiv = document.getElementById(divID)
-        daDiv.innerHTML = ''
         var infoDIV = document.getElementById(infoID)
+        var listDIV = document.getElementById(listID)
         daDiv.innerHTML = '';
         infoDIV.innerHTML = '';
-        if (screen.width/screen.height > 1) {
-            console.log('landscape')
-            daDiv.style.height = screen.height + 'px';
-            daDiv.style.width = screen.height * 1.2 + 'px'
-            
-            infoDIV.style.height = screen.height + 'px'
-            infoDIV.style.width = (screen.width - (screen.height * 1.2)) + 'px'
-            infoDIV.style.top = '0px'
-            infoDIV.style.left = screen.height * 1.2 + 'px'
-        }
+        listDIV.innerHTML = '';
+        if (3*window.innerHeight < 2.5*window.innerWidth) 
+        
+        {
+            // console.log('landscape')
+            daDiv.style.height = window.innerHeight + 'px';
+            daDiv.style.width = window.innerHeight * 1.5 + 'px'
+            daDiv.style.left = (window.innerWidth - (window.innerHeight * 1.5)) + 'px'
+            daDiv.style.top = '0px'
+            // if you want the cartogram in the left change this
 
-        if (screen.width/screen.height < 1) {
-            console.log('portrait') 
-            daDiv.style.width = screen.width + 'px';
-            daDiv.style.height = screen.width * .833 + 'px'
-            
-            infoDIV.style.width = screen.width + 'px'
-            infoDIV.style.height = (screen.height - (screen.width * .833)) + 'px'
-            infoDIV.style.top = screen.width * .833 + 'px'
+            infoDIV.style.height = window.innerHeight*.3 + 'px'
+            infoDIV.style.width = (window.innerWidth - (window.innerHeight * 1.5)) + 'px'
+            infoDIV.style.top = '0px'
+            infoDIV.style.left = '0px' // if you want the cartogram in the left change this
+            // infoDIV.style.left = window.innerHeight * 1.2 + 'px'
+            listDIV.style.height = window.innerHeight*.7 + 'px'
+            listDIV.style.width = (window.innerWidth - (window.innerHeight * 1.5)) + 'px'
+            listDIV.style.top = window.innerHeight*.3 + 'px'
+            listDIV.style.left = '0px'
+       
+        } else {
+            // console.log('portrait') 
+            var firstLine = (.25/(innerHeight/innerWidth))*(window.innerHeight - (window.innerWidth * .667))
+            // if (firstLine < 100){firstLine = 100}
+
+            var secondLine = firstLine + (window.innerWidth * .667)
+            // console.log(firstLine, secondLine, window.innerWidth, window.innerHeight )
+            infoDIV.style.width = window.innerWidth + 'px'
+            infoDIV.style.height = firstLine + 'px'
+            // infoDIV.style.height = (window.innerHeight - (window.innerWidth * .667)) + 'px'
+            infoDIV.style.top = '0px'
+            // infoDIV.style.top = window.innerWidth * .833 + 'px'
             infoDIV.style.left = '0px'
+
+
+            daDiv.style.width = window.innerWidth + 'px';
+            daDiv.style.height = window.innerWidth * .667 + 'px'
+            
+            daDiv.style.top = firstLine + 'px'
+            // daDiv.style.top = (window.innerHeight - (window.innerWidth * .667)) + 'px'
+            daDiv.style.left = '0px'
+
+
+            listDIV.style.height = (window.innerHeight - secondLine) + 'px'
+            listDIV.style.width = window.innerWidth + 'px'
+            listDIV.style.top = secondLine + 'px'
+            listDIV.style.left = '0px'
+
             }
 
-            cartogram.size = document.getElementById(divID).getBoundingClientRect().width * .078 
+            cartogram.size = document.getElementById(divID).getBoundingClientRect().width * .085 
             cartogram.fontSize = cartogram.size/3 //'20'//'20'
             cartogram.makeRectangle(divID)
-            mL.make(infoID)
+            mL.fontSize = cartogram.fontSize
+            console.log(listID)
+            mL.make(infoID, listID)
         }
-    onResize('test', 'cartoInfo')
+    onResize('test', 'cartoInfo', 'cartoList')
+window.addEventListener("orientationchange", function(event) {
+    onResize('test', 'cartoInfo', 'cartoList')
+    // location.reload()
+});
 
+window.addEventListener("resize", function(event) {
+    onResize('test', 'cartoInfo', 'cartoList')
+    // location.reload()
+});
 
 
 </script>
