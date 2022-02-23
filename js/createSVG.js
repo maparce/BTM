@@ -27,6 +27,7 @@ var cartogram = {
                 mL.state = dataCarto.STATE_LONG[index]
                 mL.numberOfStates = dataCarto.TOWNS[index]
                 mL.clicked = 1;
+                mL.makeInfoArray(mL.state, BT, 'State', 'Town Name')
                 mL.make('cartoInfo', 'cartoList')
             },
     assignColor: function(value){

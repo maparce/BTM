@@ -5,6 +5,12 @@ var mL = {
     numberOfStates:0,
     fontSize: 10,
     infoArray:[],
+    makeInfoArray(value, geojson, propIn, propOut){
+        this.infoArray = []
+        geojson.features.forEach(element =>{
+            if (element.properties[propIn]== value){this.infoArray.push(element.properties[propOut])}
+        })
+    },
     make(divID,divList,infoArray) {
         if (divID == undefined) {divID = this.divName}
         if (infoArray == undefined) {infoArray = this.infoArray}
@@ -26,32 +32,47 @@ var mL = {
                             }
         
                             ///
-        ///List DIV actions
-        daDIV = document.getElementById(divList)
-        daDIV.innerHTML = ''
+        ///List DIV actions // 
+        daDIV = document.getElementById(divList) // got tired of doing variables
 
+        // daDIV = document.getElementById('cartoListTitle') // got tired of doing variables
+        daDIV.innerHTML = ''
         newDiv = document.createElement("div");
-        newDiv.setAttribute('id','stateCarto')
-        newDiv.style.fontSize = this.fontSize*1.5 + 'px'
-        if (mL.clicked == 1){newDiv.innerHTML =  this.state} //'State: ' +
-        else{newDiv.innerHTML = '</br>'}
-        
+        newDiv.setAttribute('id','stateNumCarto')
+        newDiv2 = document.createElement("div");
+        newDiv2.setAttribute('id','stateCarto')
+        newDiv2.style.fontSize = this.fontSize*1.5 + 'px'
+        if (mL.clicked == 1){newDiv2.innerHTML =  this.state} //'State: ' +
+        else{newDiv2.innerHTML = '</br>'}
+        newDiv.appendChild(newDiv2)
         daDIV.appendChild(newDiv)
+        newDiv2 = document.createElement("div");
+        newDiv2.setAttribute('id','numberCarto')
+        if (mL.clicked > 0){newDiv2.innerHTML = 'Number of Towns: ' + this.numberOfStates}
+        else{newDiv2.innerHTML = '</br>'}
+        newDiv2.style.fontSize = this.fontSize*1.15 + 'px'
+        newDiv.appendChild(newDiv2)
+        // daDIV.appendChild(newDiv)
+        newDiv2 = document.createElement("div");
+        newDiv2.setAttribute('id','lineDivision')
+        newDiv.appendChild(newDiv2)
+
+        // daDIV.appendChild(newDiv)
+
+        // daDIV = document.getElementById("cartoListInfo") // got tired of doing variables
+        // daDIV.innerHTML = ''      
         newDiv = document.createElement("div");
-        newDiv.setAttribute('id','numberCarto')
-        if (mL.clicked > 0){newDiv.innerHTML = 'Number of Towns: ' + this.numberOfStates}
-        else{newDiv.innerHTML = '</br>'}
-        newDiv.style.fontSize = this.fontSize*1.15 + 'px'
-        daDIV.appendChild(newDiv)
-        newDiv = document.createElement("div");
-        newDiv.setAttribute('id','lineDivision')
-        daDIV.appendChild(newDiv)
+        newDiv.setAttribute('id','listOfTowns') 
+        newDiv.style.overflow = 'scroll'
+        daDIV.appendChild(newDiv)            
         infoArray.forEach((e,index)=>{
             console.log(e)
-            newDiv = document.createElement("div");
-            newDiv.setAttribute('class','infoItem item'+index)
-            newDiv.innerHTML = e;
-            daDIV.appendChild(newDiv)    
+            newDiv2 = document.createElement("p");
+            newDiv2.setAttribute('class','infoItem item'+index)
+            newDiv2.innerHTML = e;
+            newDiv2.style.fontSize = this.fontSize*.9 + 'px'
+            newDiv.appendChild(newDiv2)
+            // daDIV.appendChild(newDiv)    
         })
     },
 

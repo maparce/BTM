@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;1,300&display=swap" rel="stylesheet">
     <title>BTM Cartogram</title>
+
+<script src="../data/BT.js"></script>
 <script src="../js/createSVG.js"></script>
 <script src="../data/BTM_Cartogram.js"></script>
 <script src="../js/makeList.js"></script>
@@ -21,9 +23,16 @@
         top: 0;
         z-index: 1;
     }
-    #cartoInfo{
+
+    #listOfTowns{
+        height: 100%;
         overflow: scroll
+
     }
+    #cartoList{
+        /* overflow: auto; */
+    }
+   
     #titleCarto{
         margin-top: 10px;
         text-align: center;
@@ -59,12 +68,17 @@
         background-color: rgb(63, 63, 63);
         height: 2px;
         margin: 5px;
+        /* overflow: hidden; */
         /* position: absolute; */
         /* z-index: 100; */
 
     }
+    
     .infoItem {
         margin: 5px;
+        color: azure;
+        overflow: scroll
+
     }
     body{
         background-color:#212326;
@@ -83,7 +97,10 @@
 <!-- <div id= "test" style="background-color: #212326; position: absolute; height: 100%; aspect-ratio: 1.2;"></div> -->
 <div id= "test" style="background-color: #212326; position: absolute;"></div>
 <div id= "cartoInfo" style="background-color: #212326; position: absolute; "></div>
-<div id= "cartoList" style="background-color:  #212326; position: absolute;width: 600px"></div>
+<div id= "cartoList" style="background-color:  #212326; position: absolute;width: 600px">
+<!-- <div id= "cartoListTitle" style="background-color:  red;position: absolute;width: 300px"></div> -->
+<!-- <div id= "cartoListInfo" style="background-color:  #681156;position: absolute; width: 300px"></div> -->
+</div>
 
 <!-- <div id= "info" style="background-color: #212326; position: absolute; left: 610px; width: 200px; height: 500px;"> -->
     <p style="color:white;">State</p> 
@@ -98,7 +115,6 @@
     <p> </p>
 
 </div>
-
 <script>
     cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
     cartogram.data.value = dataCarto.TOWNS; // data with the number of towns
@@ -109,7 +125,6 @@
     cartogram.xy = [11,7]
     cartogram.xBorder = 3
     cartogram.yBorder = 10
-
 
     function onResize(divID, infoID, listID) {
         // location.reload()
@@ -173,7 +188,9 @@
             cartogram.fontSize = cartogram.size/3 //'20'//'20'
             cartogram.makeRectangle(divID)
             mL.fontSize = cartogram.fontSize
-            console.log(listID)
+            mL.makeInfoArray(mL.state, BT, 'State', 'Town Name')
+            // console.log(listID)
+
             mL.make(infoID, listID)
         }
     onResize('test', 'cartoInfo', 'cartoList')
@@ -186,6 +203,7 @@ window.addEventListener("resize", function(event) {
     onResize('test', 'cartoInfo', 'cartoList')
     // location.reload()
 });
+
 
 
 </script>
