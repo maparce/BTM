@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styleall.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;1,300&display=swap" rel="stylesheet">
+        <title>Mapping Black Towns</title>
+</head>
+<body>
+    <!-- intro -->
+
+<div id ='firstPage'>
+<div id="allContainer">
+    <div id="timgContainer">
+    <div id="tContainer">
+
+      <div class="tDiv"><span class="tP">BLACK</span> </div>
+      <div class="tDiv"><span class="tP">TOWN</span> </div>
+      <div class="tDiv"><span class="tP">MAP</span> </div>
+
+    </div>
+    <div id="imgContainer" >
+        <div class="slideshow-container">
+
+          <div class="mySlides fade">
+            <img src="./images/NonDoc_Boley,OK.jpeg" style="width:100%">
+            <div class="text">Boley, OK. NonDoc.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/NegroYearBook_1916-1917_Page_316.png" style="width:100%">
+            <div class="text">Negro Year Book, 1916-1917. Tuskegee Institute.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/JulieBennett_APImages_AfricaTown_320x320.png" style="width:100%">
+            <div class="text">Africatown, AL. Julie Bennett, AP Images.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/APBedou_Tuskegee_1907.jpeg" style="width:100%">
+            <div class="text">Tuskegee, AL (1907). Photo by Arthur P. Bedou.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/Allensworth_1915.jpg" style="width:100%">
+            <div class="text">Allensworth, CA (1915). California State Parks.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/MikePolston_Menifee_AR_2011.jpeg" style="width:100%">
+            <div class="text">Menifee, AR (2011). Photo by Mike Polston.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/Randolph_AZ_2004.jpeg" style="width:100%">
+            <div class="text">Raldolph, AZ (2004). Arizona State Library.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/LakeViewArkansas.jpeg" style="width:100%">
+            <div class="text">Lakeview, AR. Arkansas Historic Preservation Program.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/Edmondson_AR_1910.jpeg" style="width:100%">
+            <div class="text">Edmonson, AR (c. 1910). Central Arkansas Library, Butler Center for Arkansas Studies.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/LOC_NicodemusHistoricDistrict_320x320.jpeg" style="width:100%">
+            <div class="text">Nicodemus Historic District, Graham County, KS. Library of Congress.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/LouisianaNatlGuard_Fazendeville_1960_320x320.jpeg" style="width:100%">
+            <div class="text">Fazendeville, LA (1960). Louisiana National Guard.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/Nicodemus_1953_320x320.jpeg" style="width:100%">
+            <div class="text">Aerial View of Nicodemus (1953). Library of Congress.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/RonaldStephensCollection_1955_Idlewild_Brochure_320x320.jpeg" style="width:100%">
+            <div class="text">"Come to Idlewild" Brochure (1955). Ronald Stephens Collection.</div>
+          </div>
+
+            <div class="mySlides fade">
+              <img src="./images/New_Philadelphia_IL_320x320.jpeg" style="width:100%">
+              <div class="text">New Philadelphia, IL. Free Frank New Philadelphia Historical Society.</div>
+            </div>
+            
+            <div class="mySlides fade">
+              <div class="numbertext"></div>
+              <img src="./images/SaddlerTown_Marker_PatchDotCom_320x320.png" style="width:100%">
+              <div class="text">Saddlertown, NJ Historical Marker</div>
+            </div>
+            
+            <div class="mySlides fade">
+              <div class="numbertext"></div>
+              <img src="./images/ReflectionsofManatee_Angola_FL_320x320.jpeg" style="width:100%">
+              <div class="text">Angola, FL Historical Marker. Reflections of Manatee.</div>
+            </div>
+            
+            </div>
+            
+    </div>
+    <div id="infoImage" width="100%"></div>
+  <!-- thin div -->
+    <div id="infoContainer">
+        <div class="infoButton">Maps</div>
+        <div class="infoButton">AAG 2022</div>
+        <div class="infoButton">About</div>
+        <div class="infoButton">Contact</div>
+
+    </div>
+</div>
+
+
+</div>
+
+</div>
+<!-- end intro 
+start cartogram
+-->
+<div id="firstTransition"></div>
+<div id = 'secondPage'>
+<div id= "test" style="background-color: #212326; position: absolute;" ></div>
+<div id= "cartoInfo" style="background-color: #212326; position: absolute; "></div>
+<div id= "cartoList" style="background-color:  #212326; position: absolute;width: 600px"></div>
+</div>
+<!-- end cartogram 
+start intro
+-->
+<script src="./js/introPage.js"></script>
+<script src="./data/BT.js"></script>
+<script src="./js/createSVG.js"></script>
+<script src="./data/BTM_Cartogram.js"></script>
+<script src="./js/makeList.js"></script>
+<script>// script related to the first page
+sAnim.showSlides(); // function to animate the slides
+</script>
+<script> // script related to the second page 
+cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
+    cartogram.data.value = dataCarto.TOWNS; // data with the number of towns
+    cartogram.data.x = dataCarto.X; // data with the x coordinate
+    cartogram.data.y = dataCarto.Y; // data with the y coordinate 
+    cartogram.colorArray = ['#969696','#6F8CA6','#3C5973','#142740','#081526'], //set the color in increasing value // somethink is wrong with Oklahoma
+    cartogram.colorClass = [0,9,19,30,56]; // set value of color less or equal than
+    cartogram.xy = [11,7]
+    cartogram.xBorder = 3
+    cartogram.yBorder = 10
+
+
+    function onResize(divID, infoID, listID) {
+        var daImages = document.getElementsByTagName('img')
+        var lPages = 2.6
+        var pPages = 3;
+        var daDiv = document.getElementById(divID)
+        var infoDIV = document.getElementById(infoID)
+        var listDIV = document.getElementById(listID)
+
+        daDiv.innerHTML = '';
+        infoDIV.innerHTML = '';
+        listDIV.innerHTML = '';
+    
+        // if (3*window.innerHeight < 2.5*window.innerWidth) 
+        if (window.innerHeight < window.innerWidth) 
+        {
+            // console.log('landscape')
+            for (var i = 0; i < daImages.length; i++) {daImages[i].style.width = ''; daImages[i].style.height = '100%' }
+            var bottomPage1 = window.innerHeight
+            var bottomPage2 = window.innerHeight * 2
+            var bottomPage3 = lPages * window.innerHeight
+
+            document.getElementById('secondPage').style.top = '95%'
+            // bottomPage1 + 'px'
+
+            daDiv.style.height = window.innerHeight + 'px';
+            daDiv.style.width = window.innerHeight * 1.5 + 'px'
+            daDiv.style.left = (window.innerWidth - (window.innerHeight * 1.5)) + 'px'
+            daDiv.style.top = bottomPage1 + 'px'
+            // if you want the cartogram in the left change this
+
+            infoDIV.style.height = window.innerHeight*.3 + 'px'
+            infoDIV.style.width = (window.innerWidth - (window.innerHeight * 1.5)) + 'px'
+            infoDIV.style.top = bottomPage1 + 'px'
+            infoDIV.style.left = '0px' // if you want the cartogram in the left change this
+            // infoDIV.style.left = window.innerHeight * 1.2 + 'px'
+            listDIV.style.height = window.innerHeight*.7 + 'px'
+            listDIV.style.width = (window.innerWidth - (window.innerHeight * 1.5)) + 'px'
+            listDIV.style.top = bottomPage1 + 'px' //window.innerHeight*.3 + 'px'
+            listDIV.style.left = '0px'
+       
+        } else {
+            // console.log('portrait') 
+            for (var i = 0; i < daImages.length; i++) {daImages[i].style.width = '100%'; daImages[i].style.height = '' }
+            var firstLine = (.25/(innerHeight/innerWidth))*(window.innerHeight - (window.innerWidth * .667))
+
+            var secondLine = firstLine + (window.innerWidth * .667)
+            infoDIV.style.width = window.innerWidth + 'px'
+            infoDIV.style.height = firstLine + 'px'
+            infoDIV.style.top = '0px'
+            infoDIV.style.left = '0px'
+
+            daDiv.style.width = window.innerWidth + 'px';
+            daDiv.style.height = window.innerWidth * .667 + 'px'         
+            daDiv.style.top = firstLine + 'px'
+            daDiv.style.left = '0px'
+
+
+            listDIV.style.height = (window.innerHeight - secondLine) + 'px'
+            listDIV.style.width = window.innerWidth + 'px'
+            listDIV.style.top = secondLine + 'px'
+            listDIV.style.left = '0px'
+
+            }
+
+            cartogram.size = document.getElementById(divID).getBoundingClientRect().width * .085 
+            cartogram.fontSize = cartogram.size/3 //'20'//'20'
+            cartogram.makeRectangle(divID)
+            mL.fontSize = cartogram.fontSize
+            mL.makeInfoArray(mL.state, BT, 'State', 'Town Name')
+            // console.log(listID)
+
+            mL.make(infoID, listID)
+        }
+    onResize('test', 'cartoInfo', 'cartoList')
+window.addEventListener("orientationchange", function(event) {
+    onResize('test', 'cartoInfo', 'cartoList')
+    // location.reload()
+});
+window.addEventListener("resize", function(event) {
+    onResize('test', 'cartoInfo', 'cartoList')
+    // location.reload()
+});
+onResize('test', 'cartoInfo', 'cartoList')
+</script>
+</body>
+
+
+
