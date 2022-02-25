@@ -1,0 +1,99 @@
+<!-- code from code pen  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./flickity.css">
+
+<style>* { box-sizing: border-box; }
+
+    body { font-family: sans-serif; }
+    
+.carousel {
+      background: #EEE;
+    }
+    
+.main-carousel {
+  width: 100%;
+  align-items: center;
+  margin-top: 1%;
+  left: 0;
+  /* margin-left: 5%; */
+  height: 420px;
+}
+
+.carousel-cell {
+  width: 75%; /* full width */
+  /* padding-left: 10px; */
+  height: 100%;
+  background: #fff;
+  /* center images in cells with flexbox */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+    
+    /* cell number */
+    .carousel-cell:before {
+      display: block;
+      text-align: center;
+      content: counter(gallery-cell);
+      line-height: 200px;
+      font-size: 80px;
+      color: white;
+    }
+    
+.carousel-cell img {
+  display: block;
+  max-height: 100%;
+    overflow: hidden;
+    object-fit: cover;
+    /* height: 100%; */
+    /* margin: 0%; */
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top:  */
+}
+    </style>
+</head>
+<body>
+    <script src="./flickity.pkgd.min.js"></script>
+
+<h1>Flickity - autoPlay: Number</h1>
+
+<!-- Flickity HTML init -->
+<!-- <div class="carousel" data-flickity='{ "autoPlay": 1500 }'> -->
+<div class="main-carousel" data-flickity='{ "autoPlay": 1500, "pauseAutoPlayOnHover": false }'>  
+  <div class="carousel-cell">
+        <img class="carousel-cell-image" src="Allensworth_1915.jpg" style="width:100%">
+  </div>
+  <div class="carousel-cell">
+    <img class="carousel-cell-image" src="Allensworth_1915.jpg" style="width:100%">
+</div>
+  <div class="carousel-cell">
+        <img class="carousel-cell-image" src="Allensworth_1915.jpg" style="width:100%">
+  </div>
+
+</div>
+<script>
+var flkty = new Flickity( '.main-carousel', {
+  on: {
+    ready: function() {
+      console.log('Flickity is ready');
+    },
+    change: function( index ) {
+      console.log( 'Slide changed to' + index );
+    }
+  }
+});
+flkty.playPlayer()
+</script>
+</body>
+</html>
+
+
