@@ -117,6 +117,7 @@ var cartogram = {
 
         //         ///text
                 var textElem = document.createElementNS(xmlns, 'text');
+                textElem.setAttributeNS(null,'class', 'carto-text'); 
                 textElem.setAttributeNS(null,'x', xRect); 
                 textElem.setAttributeNS(null,'y', yRect);
                 textElem.setAttributeNS(null,'font-size', cartogram.fontSize+'px');
@@ -136,7 +137,7 @@ var cartogram = {
     ,
 
     centerText: function(){
-        var textE = document.getElementsByTagName('text');
+        var textE = document.getElementsByClassName('carto-text');
         var rectE = document.getElementsByTagName('rect');
         for (i = 0; i < textE.length; i++) {   
             // fix if font is bigger than rect
