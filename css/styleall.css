@@ -510,7 +510,12 @@ stroke: black;
 fill:black;
 
 }
-
+#iText{
+  font-size:.2em
+}
+#uText{
+  font-size:.2em
+}
 
 .tick{
 stroke: black;

@@ -21,7 +21,7 @@
   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
   crossorigin=""></script>
     <!-- intro -->
-
+<div id ='allPage'>
 <div id ='firstPage'>
 <div id="allContainer">
     <div id="timgContainer">
@@ -354,6 +354,7 @@ start cartogram
 
 
 </div>
+</div>
 
 <!-- end cartogram 
 start intro
@@ -382,6 +383,7 @@ cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
     cartogram.xBorder = 3
     cartogram.yBorder = 10
 
+    var lP = ''; // landscape or portrait
 
     function onResize(divID, infoID, listID) {
         var daImages = document.getElementsByTagName('img')
@@ -390,7 +392,7 @@ cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
         var bottomPage1 = window.innerHeight//document.getElementById('firstTransition').getBoundingClientRect().bottom + 30 //
         var bottomPage2 = window.innerHeight * 2
         var bottomPage3 = lPages * window.innerHeight
-        var bottomPage2Portrait = window.innerHeight*1.6
+        var bottomPage2Portrait = Math.trunc(window.innerHeight*1.8)
         var bottomPage3Portrait = pPages * window.innerHeight
 
         var daDiv = document.getElementById(divID)
@@ -404,11 +406,13 @@ cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
         // if (3*window.innerHeight < 2.5*window.innerWidth) 
         if (window.innerHeight < window.innerWidth) 
         {
-            // console.log('landscape')
+            lP = 'landscape' // console.log('landscape')
             for (var i = 0; i < daImages.length; i++) {daImages[i].style.width = ''; daImages[i].style.height = '100%' }
 
-
+            console.log(bottomPage2)
             document.getElementById('secondPage').style.top = bottomPage1 + '.px'
+            document.getElementById('thirdPage').style.top = '205%' //bottomPage2 + '.px'
+
             // bottomPage1 + 'px'
 
             daDiv.style.height = window.innerHeight + 'px';
@@ -433,11 +437,13 @@ cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
           document.getElementById('infoContainer').style.top = '10px'
           document.getElementById('infoContainer').style.left = document.getElementById('largeDiv').getBoundingClientRect().right + 'px'
           
-          
+          document.getElementById('largeDiv').style.top = bottomPage2 + '.px'
+
 
        
         } else {
-            // console.log('portrait') 
+            // console.log('portrait')
+            lP = 'portrait' 
            document.getElementById('secondPage').style.height = (window.innerHeight*.67) + 'px'
 
             for (var i = 0; i < daImages.length; i++) {daImages[i].style.width = '100%'; daImages[i].style.height = '' }
@@ -759,10 +765,35 @@ function changePauseBot(a) {
     })
 };
 
-changePauseBot('lightgray')
-playTimer('start')
+// changePauseBot('lightgray')
+// playTimer('start')
 map.on('zoomstart', function(e) { 
   decadeLessThan(currentDecade) })
+
+ var playScroll = 0;
+ map.scrollWheelZoom.disable()
+ window.addEventListener("scroll", () => { 
+  if ((scrollY/window.scrollMaxY)>.72 & playClick ==0 & playScroll == 0 & lP=='portrait'){
+  changePauseBot('lightgray')
+  playTimer('start')
+  playClick = 1
+  playScroll = 1
+}
+if ((scrollY/window.scrollMaxY)>.95 & playClick ==0 & playScroll == 0 & lP=='landscape'){
+  changePauseBot('lightgray')
+  playTimer('start')
+  playClick = 1
+  playScroll = 1
+}
+
+
+  if ((scrollY/window.scrollMaxY) < .5 & playScroll == 1) {
+    playTimer('pause');  
+   playClick = 0
+   playScroll = 0
+}
+  // console.log(scrollY/window.scrollMaxY) 
+})
 
 </script>
 </body>
