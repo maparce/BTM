@@ -1,4 +1,4 @@
-var BT = {
+{
 "type": "FeatureCollection",
 "name": "BT_26FEB2022",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
