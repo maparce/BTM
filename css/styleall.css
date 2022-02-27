@@ -3,6 +3,8 @@ body {
     font-family: 'Nunito Sans', sans-serif;
     font-size: 4.5vw;
     background-color: #212326;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
 p {
@@ -36,7 +38,7 @@ img {
   vertical-align: middle; 
   color: white;
   text-align: center;
-  background-color: green;
+  background-color: #212326;
   font-size: 14px;
   height: 28px;
   border: 1px solid white;
@@ -46,7 +48,7 @@ img {
         padding: 5px;
         display: grid; */
         justify-content: center;    
-        background-color:black;
+        background-color:#212326;
         width: 100%;
         /* max-width: 72rem;
         min-width: 320px; */
@@ -73,7 +75,7 @@ img {
 }
 #imgContainer {
     position: relative;
-    background-color:gray;
+    background-color:#212326;
     border: 4px solid white;
     overflow: hidden;
     margin: 0%;
@@ -85,7 +87,7 @@ img {
 #infoContainerAAG {
     padding: 0%;
     margin: 0%;
-    background-color: red;
+    background-color: #212326;
     position: absolute;
     width: 100%;
     height: 30px;
@@ -101,7 +103,7 @@ img {
     border: 1px solid white;
     vertical-align: middle; 
 
-    background-color: pink;
+    background-color: #212326;
     position: relative;
     height: 100%;
     width: 100%;
@@ -132,81 +134,10 @@ img {
     color: white;
     border: 1px solid white;
 }
-
-
-  /* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_slideshow_auto */
-
-  /* * {box-sizing: border-box;} */
-  /* body {font-family: "Signika", sans-serif;} */
-  .mySlides {display: none;}
-  /* img {vertical-align: middle;} */
   
-  /* Slideshow container */
-  .slideshow-container {
-    /* max-width: 1000px; */
-    position: relative;
-    margin: auto;
-  }
   
-  /* Caption text */
-  .text {
-    color: #f2f2f2;
-    font-size: 10px;
-  /* i made the font size 0 so I could hide them and then use the text in another div */
-    padding: 8px 12px;
-    position: relative;
-    bottom: 8px;
-    width: 100%;
-    text-align: center;
-  }
-  
-  /* Number text (1/3 etc) */
-  .numbertext {
-    color: #f2f2f2;
-    font-size: 12px;
-    padding: 8px 12px;
-    position: absolute;
-    top: 0;
-  }
-  
-  /* The dots/bullets/indicators */
-  /* .dot {
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-  } */
-  
-  .active {
-    background-color: #717171;
-  }
-  
-  /* Fading animation */
-  .fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-    animation-name: fade;
-    animation-duration: 1.5s;
-  }
-  
-  @-webkit-keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
-  }
-  
-  @keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
-  }
-
-    /* #timgContainer{
-        width: 320px;
-     } */
     #imgContainer {
-        background-color:rgb(0, 0, 0);
+        background-color:#212326;
         position: relative;
         width: 100%;
         }
@@ -222,15 +153,6 @@ img {
             grid-row: 1;
         }
   
-
-  @media screen and (min-width: 500px) {
-    body {
-        /* meaning that at more than 600px screen the font size will be at least 50px in size: */
-
-       /* font-size: 50px; */
-       
-        }    
-    }
 
     #test{
         padding: 0;
@@ -303,11 +225,11 @@ img {
 
     }
     body{
-        background-color: red;
+        background-color: #212326;
     }
 
     #firstPage{
-      background-color: yellow;
+      background-color:#212326;
       height: 90%;
       width: 100%;
       position: absolute;
@@ -317,15 +239,10 @@ img {
     #firstTransition{
       width: 100%;
       height: 40px;
-      background-color: purple;
+      background-color: #212326;
       position:absolute;
       top: 95%;
       z-index: 0;
-
-      /* top:100%; */
-      /* left: 0px; */
-      /* position: absolute; */
-      /* z-index: 999; */
     }
     #secondPage{
       top:95%;
@@ -335,7 +252,7 @@ img {
     #secondTransition{
       width: 100%;
       height: 40px;
-      background-color: purple;
+      background-color: #212326;
       position:absolute;
       top: 200%;
       z-index: 0;
@@ -346,11 +263,11 @@ img {
       width:100%;
       height: 100%;
       position:absolute;
-      background-color: darkblue;
+      background-color:#212326;
       z-index: 3;
     }
     .carousel {
-      background: #EEE;
+      background: #212326;
     }
     
     .main-carousel {
@@ -360,7 +277,6 @@ img {
       /* left: 0; */
       /* margin-left: 5%; */
       height: 100%;
-            /* margin-bottom: 5%; */
 
     }
 
@@ -369,7 +285,7 @@ img {
   /* padding-left: 10px; */
   left: 0%;
   height: 100%;
-  background: #fff;
+  background:#212326;
   /* center images in cells with flexbox */
   display: flex;
   align-items: center;
@@ -380,10 +296,10 @@ img {
     .carousel-cell:before {
       display: block;
       text-align: center;
-      /* content: counter(gallery-cell); */
+      /* content: counter(gallery-cell); this is the section needed to shift the slide to the side to show the next*/
       /* line-height: 200px; */
-      font-size: 80px;
-      color: white;
+      /* font-size: 80px; */
+      /* color: white; */
     }
     
 .carousel-cell img {
@@ -434,13 +350,8 @@ z-index: 9999;
       font-size: 20px;
 }
 #daMap {
-  background-color: #0fc03b;
   width: 100%;
   height: 330px;
-  /* left: 30%; */
-  /* width: 70%; */
-  /* width: 100%;
-  height: 400px; */
   position: relative;
   margin: 0;
   padding: 0;
@@ -453,13 +364,13 @@ z-index: 9999;
   /* width: 330px; */
   /* height: 50%; */
 /* the following will allow it to be in the middle  */
-  background-color: white;
+  background-color: red;
   opacity: 0.85; 
   /* margin: auto // important for centering  */
   margin: auto;
   position:absolute; 
   /* top: 85%; */
-  z-index: 999;
+  /* z-index: 999; */
 }
 #svgDiv{
         /* margin: auto // important for centering  */
@@ -511,10 +422,10 @@ fill:black;
 
 }
 #iText{
-  font-size:.2em
+  font-size:9px
 }
 #uText{
-  font-size:.2em
+  font-size:9px
 }
 
 .tick{
@@ -536,7 +447,7 @@ position: relative;
 }
 .infoTab{
 font-size: small;
-color: rgb(28, 34, 34);
+color: whitesmoke;
 margin: 5px;
 margin-left: 10px;
 padding: 0;
