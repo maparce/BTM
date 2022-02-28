@@ -180,8 +180,9 @@ img {
     }
 
     #listOfTowns{
-        height: 100%;
-        overflow: scroll
+        height: 70%;
+        overflow: scroll;
+        border-bottom: 1px solid rgb(63, 63, 63);
 
     }
     #cartoList{
