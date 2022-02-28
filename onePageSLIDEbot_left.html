@@ -559,9 +559,13 @@ cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
 //     onResize('test', 'cartoInfo', 'cartoList')
 //     // location.reload()
 // });
+var propHW = window.innerHeight/innerWidth;
 window.addEventListener("resize", function(event) {
+  // console.log(Math.abs(propHW-(window.innerHeight/innerWidth)))
+    if (Math.abs(propHW-(window.innerHeight/innerWidth)) > .1) {
+    propHW = window.innerHeight/innerWidth;
     onResize('test', 'cartoInfo', 'cartoList')
-    resizeSlide()
+    resizeSlide()}
 
     // location.reload()
 });
