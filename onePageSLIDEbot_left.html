@@ -387,7 +387,7 @@ cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
     var lP = ''; // landscape or portrait
 
     function onResize(divID, infoID, listID) {
-        alert('resize_v2')
+        alert('resize_v_width')
         var daImages = document.getElementsByClassName('cimage') //TagName('img')// select images from slider
         var lPages = 2.6
         var pPages = 3;
@@ -559,11 +559,14 @@ cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
 //     onResize('test', 'cartoInfo', 'cartoList')
 //     // location.reload()
 // });
-var propHW = window.innerHeight/innerWidth;
+var origWidth = window.innerWidth
+// var propHW = window.innerHeight/innerWidth;
 window.addEventListener("resize", function(event) {
   // console.log(Math.abs(propHW-(window.innerHeight/innerWidth)))
-    if (Math.abs(propHW-(window.innerHeight/innerWidth)) > .1) {
-    propHW = window.innerHeight/innerWidth;
+    // if (Math.abs(propHW-(window.innerHeight/innerWidth)) > .1) {
+      if (Math.abs(originalWidth-(window.innerWidth)) > 20) {
+        origWidth = window.innerWidth
+    // propHW = window.innerHeight/innerWidth;
     onResize('test', 'cartoInfo', 'cartoList')
     resizeSlide()}
 
