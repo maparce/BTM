@@ -34,12 +34,7 @@
     </div>
     <div id="imgContainer" >
         <!-- <div class="slideshow-container"> -->
-          <div class="main-carousel" data-flickity='{ "autoPlay": 1500, "pauseAutoPlayOnHover": false }'>  
-            
-            <div class="carousel-cell">
-              <div class="numbertext"></div>
-              <img class="cimage" src="./images/ReflectionsofManatee_Angola_FL_320x320.jpeg" style="width:100%">
-              <!-- <div class="text">Angola, FL Historical Marker. Reflections of Manatee.</div> -->
+          <div class="main-carousel" data-flickity='{ "autoPlay": 3000, "pauseAutoPlayOnHover": false }'>  
             </div>
             
             </div>
@@ -50,8 +45,8 @@
     <div id="infoContainerAAG">
       <!-- infoButton -->
         <div class="tDiv tSmall">Maps</div>
-        <div class="tDiv tSmall">AAG 2022</div>
-        <div class="tDiv tSmall">About</div>
+        <div class="tDiv tSmall" onclick="window.open('AAG2022_Flyer_final.png', 'Flyer');" style="cursor: pointer;">AAG 2022</div>
+        <div class="tDiv tSmall" onclick="window.open('about.html', 'About')" style="cursor: pointer;">About</div>
         <div class="tDiv tSmall">Contact</div>
 
     </div>
@@ -293,11 +288,37 @@ start intro
 <script src="./js/makeList.js"></script>
 
   <script src="../js/removeTileLines.js"></script>
- 
+  <script src="./data/BTM_slideshow_images.js"></script>
+
 <script>// script related to the first page
 // sAnim.showSlides(); // function to animate the slides
 </script>
-<script> // script related to the second page 
+<script> 
+function initSlides(address){
+  var newAddress = './images/' + address;
+  var mC = document.getElementsByClassName('main-carousel')[0]
+  var newDiv = document.createElement("div");
+      newDiv.setAttribute('class','carousel-cell')
+      var newImg = document.createElement("img");
+      newImg.setAttribute('class','cimage-cell')
+      newImg.setAttribute('src',newAddress)
+      newDiv.appendChild(newImg)
+      mC.appendChild(newDiv)
+      }
+  slide.forEach(e =>{
+    initSlides(e.filename)
+  })
+  // initSlides()
+  var flkty = new Flickity( '.main-carousel', {
+  on: {
+    change: function( index ) {
+      document.getElementById('infoImage').innerHTML = slide[index].caption  // console.log( 'Slide changed to' + slide[index].caption );
+    },
+  }
+});
+flkty.playPlayer()
+document.getElementById('infoImage').innerHTML = slide[0].caption  // console.log( 'Slide changed to' + slide[index].caption );
+
 cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
     cartogram.data.value = dataCarto.TOWNS; // data with the number of towns
     cartogram.data.x = dataCarto.X; // data with the x coordinate
@@ -311,7 +332,7 @@ cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
     var lP = ''; // landscape or portrait
 
     function onResize(divID, infoID, listID) {
-        alert('resize_v_width')
+        // alert('resize_v_width')
         var daImages = document.getElementsByClassName('cimage') //TagName('img')// select images from slider
         var lPages = 2.6
         var pPages = 3;

@@ -42,7 +42,7 @@ img {
 }
 #infoImage{
   margin: 0%;
-  padding: 0%;
+  padding-top: 1%;
   width: 100%;
   vertical-align: middle; 
   color: white;
@@ -62,7 +62,6 @@ img {
         /* max-width: 72rem;
         min-width: 320px; */
         height: 80%;
-        /* min-height: 50vh; */
         gap: 1px;
         
 }
@@ -199,8 +198,6 @@ img {
         color: white;
         font-size: 1.5vw ;
         font-family: 'Nunito Sans', sans-serif;
-        /* font-size: 8vh;  */
-      /* i need to put 10vh for vertical cellphone position */
     }
     #subTitleCarto{
         padding: 0px;
@@ -216,7 +213,6 @@ img {
         margin-left: 10px;
         color: white;
         font-family: 'Nunito Sans', sans-serif;
-        /* font-size: 7vh;  */
     }
     #numberCarto{
         text-align: left;
@@ -225,7 +221,6 @@ img {
         /* position: absolute; */
         z-index: 0;
         font-family: 'Nunito Sans', sans-serif;
-        /* font-size: 6vh;  */
     }
     #lineDivision{
         background-color: rgb(63, 63, 63);
