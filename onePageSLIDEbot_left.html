@@ -467,6 +467,7 @@ cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
             // console.log('portrait')
             lP = 'portrait' 
            document.getElementById('secondPage').style.height = (window.innerHeight*.67) + 'px'
+           document.getElementById('secondPage').style.top = bottomPage1 + '.px'
 
             for (var i = 0; i < daImages.length; i++) {daImages[i].style.width = '100%'; daImages[i].style.height = '' }
             var firstLine = (.25/(innerHeight/innerWidth))*(window.innerHeight - (window.innerWidth * .667))
