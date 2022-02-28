@@ -504,3 +504,8 @@ top:400px
 #slider{
   z-index: 999;
 }
+
+.transparent{
+  fill:none;
+  stroke: none;
+}
