@@ -446,7 +446,7 @@ cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
 
             document.getElementById('largeDiv').style.width = '100%'
             document.getElementById('largeDiv').style.height = '100%'
-            document.getElementById('infoContainer').style.top = window.innerHeight/2 + 'px'//document.getElementById('container').getBoundingClientRect().bottom + 'px'
+            document.getElementById('infoContainer').style.top = document.getElementById('container').getBoundingClientRect().bottom + 'px' //window.innerHeight/2 + 'px'//
             document.getElementById('infoContainer').style.left = '0px'
             document.getElementById('infoContainer').style.width = '100%'
 
@@ -679,6 +679,7 @@ scrollerValue(iValue)
 var playClick = 0
 var timer;
 function playTimer(ps,iV) {
+  console.log('timer')
   if (ps == 'pause'){clearInterval(timer);  changePauseBot('black'); changePlayBot('lightgray'); playClick = 0; return}
   if (playClick == 1) {return}
   changePauseBot('lightgray')
@@ -693,9 +694,10 @@ timer = setInterval(function() {
         let timePassed = Date.now() - start;
         if (timePassed >= 100*120) {
           clearInterval(timer); // finish the animation after 2 seconds
-          changePlayBot('lightgray')
-          changePauseBot('black')
+          // changePlayBot('lightgray')
+          // changePauseBot('black')
           playClick = 0;
+          playTimer('start')
           return;
         }
         iValue = iValue + 1
@@ -704,9 +706,12 @@ timer = setInterval(function() {
         scrollerValue(iValue)
         if(iValue >=50) {
           clearInterval(timer)
-          changePlayBot('lightgray')
-          changePauseBot('black')
+          // changePlayBot('lightgray')
+          // changePauseBot('black')
           playClick = 0;
+          playTimer('start')
+
+       
           }
         }
         // draw the animation at the moment timePassed
@@ -733,27 +738,37 @@ map.on('zoomstart', function(e) {
 
  var playScroll = 0;
  map.scrollWheelZoom.disable()
- window.addEventListener("scroll", () => { 
-  if ((scrollY/window.scrollMaxY)>.72 & playClick ==0 & playScroll == 0 & lP=='portrait'){
-  changePauseBot('lightgray')
-  playTimer('start')
-  playClick = 1
-  playScroll = 1
-}
-if ((scrollY/window.scrollMaxY)>.95 & playClick ==0 & playScroll == 0 & lP=='landscape'){
-  changePauseBot('lightgray')
-  playTimer('start')
-  playClick = 1
-  playScroll = 1
-}
+ playTimer('start')
 
-  if ((scrollY/window.scrollMaxY) < .5 & playScroll == 1) {
-    playTimer('pause');  
-   playClick = 0
-   playScroll = 0
-}
-  // console.log(scrollY/window.scrollMaxY) 
-})
+// repeatEvery10Second()
+
+
+// var repeat = null;
+// function repeatEvery10Second() {
+//   count = 10;
+//   repeat = setInterval(playTimer('start'), 1000);
+// }
+//  window.addEventListener("scroll", () => { 
+//   if ((scrollY/window.scrollMaxY)>.72 & playClick ==0 & playScroll == 0 & lP=='portrait'){
+//   changePauseBot('lightgray')
+//   playTimer('start')
+//   playClick = 1
+//   playScroll = 1
+// }
+// if ((scrollY/window.scrollMaxY)>.95 & playClick ==0 & playScroll == 0 & lP=='landscape'){
+//   changePauseBot('lightgray')
+//   playTimer('start')
+//   playClick = 1
+//   playScroll = 1
+// }
+
+//   if ((scrollY/window.scrollMaxY) < .5 & playScroll == 1) {
+//     playTimer('pause');  
+//    playClick = 0
+//    playScroll = 0
+// }
+//   // console.log(scrollY/window.scrollMaxY) 
+// })
 
 </script>
 </body>
