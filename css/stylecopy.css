@@ -8,6 +8,7 @@ body {
     padding: 0%;
     margin: 0%;
     min-height: 100%;
+    /* so you can't select text */
     -webkit-touch-callout: none;
     -webkit-user-select: none; 
     -khtml-user-select: none; 
@@ -50,7 +51,7 @@ img {
   text-align: center;
   background-color: #212326;
   font-size: 14px;
-  height: 44px;
+  height: 40px;
   border: 3px solid white;
 }
 #timgContainer {
@@ -415,6 +416,7 @@ stroke: none;
   stroke-dasharray:1,1;
   pointer-events: visible;
   cursor: pointer;
+
 }
 .clickable{
 pointer-events: visible;
@@ -443,12 +445,10 @@ cursor: pointer;
 
 }
 #iText{
-  font-size:9px;
-  /* cursor: pointer; */
+  font-size:9px
 }
 #uText{
-  font-size:9px;
-  /* cursor: pointer; */
+  font-size:9px
 }
 
 .tick{
@@ -503,4 +503,9 @@ top:400px
 
 #slider{
   z-index: 999;
+}
+
+.transparent{
+  fill:none;
+  stroke: none;
 }

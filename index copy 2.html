@@ -46,9 +46,9 @@
     <div id="infoContainerAAG">
       <!-- infoButton -->
         <div class="tDiv tSmall" onclick="document.getElementById('titleCarto').scrollIntoView({behavior: 'smooth'})" style="cursor: pointer;"> Maps</div>
-        <div class="tDiv tSmall" onclick="window.open('AAG2022_Flyer_final.png', 'Flyer');" style="cursor: pointer;">AAG 2022</div>
+        <div class="tDiv tSmall" onclick="window.open('AAG2022_Flyer_final.jpeg', 'Flyer');" style="cursor: pointer;">AAG 2022</div>
         <div class="tDiv tSmall" onclick="window.open('about.html', 'About')" style="cursor: pointer;">About</div>
-        <div class="tDiv tSmall">Contact</div>
+        <div class="tDiv tSmall" onclick="window.open('contact.html', 'Contact')" style="cursor: pointer;">Contact</div>
 
     </div>
   </div>
@@ -127,23 +127,15 @@ start cartogram
                       if (evt.target.classList.contains('incorporated'))
                       { 
                         if (inc == 0)
-                        { document.querySelectorAll('.fullInc').forEach(e=>{
-                          console.log(e)
-                          e.style.fill = '#464545';//
-                          e.style.stroke = 'none';
-                        })
+                        { evt.target.style.fill = '#464545';
+                          evt.target.style.stroke = 'none';
                           inc = 1
                           decadeLessThan(sValue)
-                          return 
+                          return
                         }
                         if (inc == 1) {
-                          document.querySelectorAll('.fullInc').forEach(e=>{
-                            console.log(e)
-                            e.style.fill = 'none';//
-                            e.style.stroke = '#464545';
-                          })
-                      //evt.target.style.fill = 'none'
-                      //evt.target.style.stroke = '#000000'
+                      evt.target.style.fill = 'none'
+                      evt.target.style.stroke = '#000000'
                       inc = 0
                       decadeLessThan(sValue, 'incOff')
                       return }
@@ -152,25 +144,15 @@ start cartogram
                       if (evt.target.classList.contains('unincorporated'))
                       {
                         if (unc == 0)
-                        { document.querySelectorAll('.fullUnc').forEach(e=>{
-                          console.log(e)
-                          e.style.fill = '#301f7e';//
-                          e.style.stroke = 'none';
-                        })
-                          //evt.target.style.fill = '#301f7e';
-                          //evt.target.style.stroke = 'none';
+                        { evt.target.style.fill = '#301f7e';
+                          evt.target.style.stroke = 'none';
                           unc = 1
                           decadeLessThan(sValue)
                           return
                         }
                         if (unc == 1) {
-                          document.querySelectorAll('.fullUnc').forEach(e=>{
-                            console.log(e)
-                            e.style.fill = 'none';//
-                            e.style.stroke = 'black';
-                          })
-                      //evt.target.style.fill = 'none'
-                      //evt.target.style.stroke = 'black'
+                      evt.target.style.fill = 'none'
+                      evt.target.style.stroke = 'black'
                       unc = 0
                       decadeLessThan(sValue, 'uncOff')
                       return }
@@ -242,18 +224,18 @@ start cartogram
                    }
                  ]]> </script>
                  <g transform= 'translate(-8 4)'>
-          <g id="elG" class="draggable transparent">	<rect class="draggable" x="123" y="195.3"  width="25" height="27.4" ></rect>	<path class="st1 draggable" d="M139.7,209.8c0.9-0.8,1.9-1.7,2.8-2.5c0.9,0.8,1.9,1.7,2.8,2.5c0,1.2,0,2.4,0,3.6c0,0,0,0,0,0.1c0,0,0,0,0,0   c0,0,0,0-0.1,0c0,0,0,0-0.1,0c-0.6,0-1.2,0-1.7,0c0-0.5,0-1.1,0-1.6c0,0,0-0.1,0-0.1c0,0,0,0-0.1,0c0,0-0.1,0-0.1,0   c-0.5,0-1,0-1.5,0c0,0-0.1,0-0.1,0l-0.1,0.1c0,0,0,1.6,0,1.6c-0.6,0-1.2,0-1.8,0c0,0-0.1,0-0.1,0c0,0,0,0,0,0c0,0,0,0,0-0.1   C139.7,212.1,139.7,210.9,139.7,209.8z"></path>	
+          <g id="elG" class="draggable">	<rect class="transparent draggable" x="137" y="203.3"  width="11" height="10.4"></rect>	<path class="st1 draggable" d="M139.7,209.8c0.9-0.8,1.9-1.7,2.8-2.5c0.9,0.8,1.9,1.7,2.8,2.5c0,1.2,0,2.4,0,3.6c0,0,0,0,0,0.1c0,0,0,0,0,0   c0,0,0,0-0.1,0c0,0,0,0-0.1,0c-0.6,0-1.2,0-1.7,0c0-0.5,0-1.1,0-1.6c0,0,0-0.1,0-0.1c0,0,0,0-0.1,0c0,0-0.1,0-0.1,0   c-0.5,0-1,0-1.5,0c0,0-0.1,0-0.1,0l-0.1,0.1c0,0,0,1.6,0,1.6c-0.6,0-1.2,0-1.8,0c0,0-0.1,0-0.1,0c0,0,0,0,0,0c0,0,0,0,0-0.1   C139.7,212.1,139.7,210.9,139.7,209.8z"></path>	
                     <path class="st2 draggable" d="M137.8,209.7c0,0.3,0,0.5,0,0.8c0.1,0.1,0.2,0.2,0.2,0.3c1.5-1.7,3-3.4,4.5-5.1c1.5,1.7,3,3.4,4.5,5.1   c0.1-0.1,0.2-0.2,0.3-0.3c0-0.2,0-0.5,0-0.7c-1.6-1.8-3.2-3.6-4.8-5.4C140.9,206.1,139.4,207.9,137.8,209.7z"></path>	
                     <path class="st2 draggable" d="M139.8,204.9c0,0.6,0,1.2,0,1.8c0.4-0.4,0.8-0.7,1.2-1.1c0-0.2,0-0.5,0-0.7   C140.6,204.9,140.2,204.9,139.8,204.9z"></path>
                   </g>
                   <g id="pauseBot" class="clickable pause" transform= 'translate(2 0)'>
-                      <rect class="clickable pause transparent" x="192" y="193"  width="15" height="25"></rect>
+                      <rect class="clickable pause transparent" x="196" y="199"  width="5" height="10"></rect>
                       <line class="clickable pause wideLine" x1="197" y1="200" x2="197" y2="208"></line>
                       <line class="clickable pause wideLine" x1="200" y1="200" x2="200" y2="208"></line>
                     </g>
                     <g id="playBot" class="clickable" transform= 'translate(-2 0)'>
-                      <rect class="clickable play transparent" x="70" y="195" width="25" height="25"></rect>
-                      <polygon id="oPlayBot" class="clickable play full" points="82,200, 89,204, 82,208"></polygon>
+                      <polygon id="oPlayBot" class="clickable play" points="82,200, 89,204, 82,208"></polygon>
+                      <!-- <polygon id="i2PlayBot" class="" points="82.25,200.5, 88,204, 82.25,207.5" fill="white"></polygon> -->
                       <!-- <polygon id="iPlayBot" class="clickable play" points="83,202, 87,204, 83,206"></polygon> -->
                     </g>
                     <!-- make the finger pointer -->
@@ -266,14 +248,12 @@ start cartogram
                         <!-- <circle class="st3" cx="197.7" cy="213.9" r="1.7"></circle> -->
                         <!-- <text id="sliderText" x="104" y="222" font-size=".5em">Towns established before: </text> -->
                         
-                        <circle id="iBot" class="clickable incorporated fullInc" cx="210" cy="208" r="4" onmousdown='iBot(evt)'></circle>
-                        <rect  class="clickable incorporated transparent" x="200" y="192" width="80" height="20" onmousdown='iBot(evt)'></rect>
+                        <circle id="iBot" class="clickable incorporated" cx="210" cy="208" r="4" onmousdown='iBot(evt)'></circle>
+                        <!-- <rect   id="iBotRect" class="clickable incorporated" x="210" y="208" width="11" height="10.4"></rect> -->
   
-                        <circle id="uBot" class="clickable unincorporated fullUnc" cx="210" cy="219" r="4"></circle>
-                        <rect  class="clickable unincorporated transparent" x="200" y="213" width="80" height="14" onmousdown='iBot(evt)'></rect>
-
-                        <text id="iText" class="clickable incorporated" x="215" y="210" font-size=".4em" >Incorporated</text>
-                        <text id="uText" class="clickable unincorporated" x="215" y="221" font-size=".4em">Unincorporated</text>
+                        <circle id="uBot" class="clickable unincorporated" cx="210" cy="219" r="4"></circle>
+                        <text id="iText" x="215" y="210" font-size=".4em" >Incorporated</text>
+                        <text id="uText" x="215" y="221" font-size=".4em">Unincorporated</text>
   
                       </g></svg>
                     </div>
@@ -415,8 +395,7 @@ cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
           document.getElementById('largeDiv').style.height = window.innerHeight + 'px'
           document.getElementById('infoContainer').style.top = '10px'
           document.getElementById('infoContainer').style.left = document.getElementById('largeDiv').getBoundingClientRect().right + 'px'
-          document.getElementById('infoContainer').style.width = '50%'
-
+          
           document.getElementById('largeDiv').style.top = bottomPage2 + '.px'
 
 
@@ -507,10 +486,13 @@ cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
 
         function scrollerValue(dx){
             var decadeNum = ((Math.trunc((dx+50)/3.03) * 10) + 1690)
+            // document.getElementById('sliderText').innerHTML = "Towns established before: " 
             document.getElementById('daTitle').innerHTML = "Towns established before: " 
             + decadeNum
             decadeLessThan(decadeNum)
             sValue = decadeNum
+            // Math.trunc(dx)
+            // console.log(dx)
         }
 
 // });
@@ -527,8 +509,6 @@ function resizeSlide() {
   document.getElementsByClassName('flickity-viewport')[0].style.height = document.getElementById('imgContainer').getBoundingClientRect().height + 'px'
 
 }
-
-//Leaflet
 
         const svgIconLarge = L.divIcon({
   html: `<svg class="mySVGicon" aria-labelledby="locationIconTitle" color="#000000" fill="none" height="48px" role="img" stroke="#000000" stroke-linecap="square" stroke-linejoin="miter" stroke-width="1" viewBox="0 0 24 24" width="48px" xmlns="http://www.w3.org/2000/svg"><title id="locationIconTitle"/><path id="svgIconTag" d="M12,21 C16,16.8 18,12.8 18,9 C18,5.6862915 15.3137085,3 12,3 C8.6862915,3 6,5.6862915 6,9 C6,12.8 8,16.8 12,21 Z"/><circle id="svgIconCircle" cx="12" cy="9" r="1"/></svg>`,  className: "",
@@ -559,7 +539,9 @@ else {
   var map = L.map('daMap', { attributionControl:false }).setView(mapCenter, 3);      
 
 }
-      var daTile = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', 
+    // CartoDB Positron 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
+    // CartoDB Dark Matter 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+      var daTile = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', 
         {maxZoom: 19,  })
         daTile.addTo(map)
         var markerArray = []
@@ -646,11 +628,6 @@ else {
             })
         }
 
-  map.on('zoomstart', function(e) { 
-  decadeLessThan(currentDecade) })
-  
-  map.scrollWheelZoom.disable()
-//// end leaflet
  
 var makeTicks = function(lineID, geo, tickSize, minMax, tickArray, text, tsize,gap){
   var xmlns = "http://www.w3.org/2000/svg";
@@ -746,11 +723,11 @@ timer = setInterval(function() {
     }
 
 function changePlayBot(a) {
-  document.querySelectorAll('.full').forEach(e=>{
+  document.querySelectorAll('.play').forEach(e=>{
     e.style.stroke = a
     e.style.fill = a
+
     })
-  
 };
 function changePauseBot(a) {
   document.querySelectorAll('.wideLine').forEach(e=>{
@@ -758,11 +735,12 @@ function changePauseBot(a) {
     })
 };
 
-
+map.on('zoomstart', function(e) { 
+  decadeLessThan(currentDecade) })
 
  var playScroll = 0;
  playTimer('start')
- 
+ map.scrollWheelZoom.disable()
 
 // repeatEvery10Second()
 
