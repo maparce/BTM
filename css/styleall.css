@@ -3,8 +3,8 @@ body {
     font-family: 'Nunito Sans', sans-serif;
     font-size: 4.5vw;
     background-color: #212326;
-    max-width: 100%;
-    overflow-x: hidden;
+    /* max-width: 100%; */
+    /* overflow-x: hidden; */
     padding: 0%;
     margin: 0%;
     -webkit-touch-callout: none; /* iOS Safari */
