@@ -564,7 +564,7 @@ var origWidth = window.innerWidth
 window.addEventListener("resize", function(event) {
   // console.log(Math.abs(propHW-(window.innerHeight/innerWidth)))
     // if (Math.abs(propHW-(window.innerHeight/innerWidth)) > .1) {
-      if (Math.abs(originalWidth-(window.innerWidth)) > 20) {
+      if (Math.abs(origWidth-(window.innerWidth)) > 20) {
         origWidth = window.innerWidth
     // propHW = window.innerHeight/innerWidth;
     onResize('test', 'cartoInfo', 'cartoList')
