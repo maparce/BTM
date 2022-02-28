@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;1,300&display=swap" rel="stylesheet">
+        <title>Mapping Black Towns</title>
+</head>
+<body>
+
+<div id="allContainer">
+    <div id="timgContainer">
+    <div id="tContainer">
+
+      <div class="tDiv"><span class="tP">BLACK</span> </div>
+      <div class="tDiv"><span class="tP">TOWN</span> </div>
+      <div class="tDiv"><span class="tP">MAP</span> </div>
+
+    </div>
+    <div id="imgContainer" >
+        <div class="slideshow-container">
+
+          <div class="mySlides fade">
+            <img src="./images/NonDoc_Boley,OK.jpeg" style="width:100%">
+            <div class="text">Boley, OK. NonDoc.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/NegroYearBook_1916-1917_Page_316.png" style="width:100%">
+            <div class="text">Negro Year Book, 1916-1917. Tuskegee Institute.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/JulieBennett_APImages_AfricaTown_320x320.png" style="width:100%">
+            <div class="text">Africatown, AL. Julie Bennett, AP Images.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/APBedou_Tuskegee_1907.jpeg" style="width:100%">
+            <div class="text">Tuskegee, AL (1907). Photo by Arthur P. Bedou.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/Allensworth_1915.jpg" style="width:100%">
+            <div class="text">Allensworth, CA (1915). California State Parks.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/MikePolston_Menifee_AR_2011.jpeg" style="width:100%">
+            <div class="text">Menifee, AR (2011). Photo by Mike Polston.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/Randolph_AZ_2004.jpeg" style="width:100%">
+            <div class="text">Raldolph, AZ (2004). Arizona State Library.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/LakeViewArkansas.jpeg" style="width:100%">
+            <div class="text">Lakeview, AR. Arkansas Historic Preservation Program.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/Edmondson_AR_1910.jpeg" style="width:100%">
+            <div class="text">Edmonson, AR (c. 1910). Central Arkansas Library, Butler Center for Arkansas Studies.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/LOC_NicodemusHistoricDistrict_320x320.jpeg" style="width:100%">
+            <div class="text">Nicodemus Historic District, Graham County, KS. Library of Congress.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/LouisianaNatlGuard_Fazendeville_1960_320x320.jpeg" style="width:100%">
+            <div class="text">Fazendeville, LA (1960). Louisiana National Guard.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/Nicodemus_1953_320x320.jpeg" style="width:100%">
+            <div class="text">Aerial View of Nicodemus (1953). Library of Congress.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/RonaldStephensCollection_1955_Idlewild_Brochure_320x320.jpeg" style="width:100%">
+            <div class="text">"Come to Idlewild" Brochure (1955). Ronald Stephens Collection.</div>
+          </div>
+
+            <div class="mySlides fade">
+              <img src="./images/New_Philadelphia_IL_320x320.jpeg" style="width:100%">
+              <div class="text">New Philadelphia, IL. Free Frank New Philadelphia Historical Society.</div>
+            </div>
+            
+            <div class="mySlides fade">
+              <div class="numbertext"></div>
+              <img src="./images/SaddlerTown_Marker_PatchDotCom_320x320.png" style="width:100%">
+              <div class="text">Saddlertown, NJ Historical Marker</div>
+            </div>
+            
+            <div class="mySlides fade">
+              <div class="numbertext"></div>
+              <img src="./images/ReflectionsofManatee_Angola_FL_320x320.jpeg" style="width:100%">
+              <div class="text">Angola, FL Historical Marker. Reflections of Manatee.</div>
+            </div>
+            
+            </div>
+            <!-- <br> -->
+            
+            <!-- <div style="text-align:center">
+              <span class="dot"></span> 
+              <span class="dot"></span> 
+              <span class="dot"></span> 
+            </div> -->
+            
+    </div>
+  <!-- thin div -->
+    <div id="infoContainer">
+        <div class="infoButton"><p>Maps</p></div>
+        <div class="infoButton"><p>AAG 2022</p></div>
+        <div class="infoButton"><p>About</p></div>
+        <div class="infoButton"><p>Contact</p></div>
+
+    </div>
+</div>
+</div>
+    <!-- t - Title class divs  -->
+
+</body>
+<script>
+    var slideIndex = 0;
+    showSlides();
+    
+    function showSlides() {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+    //   var dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}    
+    //   for (i = 0; i < dots.length; i++) {
+    //     // dots[i].className = dots[i].className.replace(" active", "");
+    //   }
+      slides[slideIndex-1].style.display = "block";  
+    //   dots[slideIndex-1].className += " active";
+      setTimeout(showSlides, 5000); // Change image every 5 seconds
+    }
+
+    function setDivProportion()
+
+    {
+      document.getElementById('allContainer').style.width = window.innerWidth
+      document.getElementById('allContainer').style.height = window.innerWidth
+
+    }
+    </script>
+</html>
