@@ -360,6 +360,7 @@ z-index: 999;
       opacity: .85;
       width: 300px;
       font-size: 20px;
+      z-index: 999;
 }
 #daMap {
   width: 100%;
