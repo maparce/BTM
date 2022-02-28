@@ -40,6 +40,7 @@
             </div>
             
     </div>
+    <div>
     <div id="infoImage" width="100%"></div>
   <!-- thin div -->
     <div id="infoContainerAAG">
@@ -50,6 +51,7 @@
         <div class="tDiv tSmall">Contact</div>
 
     </div>
+  </div>
 </div>
 
 
@@ -366,17 +368,6 @@ cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
             document.getElementById('tContainer').style.left = '0%'
             document.getElementById('tContainer').style.height = '100%'
             document.getElementById('tContainer').style.flexDirection = 'column'
-
-
-
-
-
-
-
-
-
-
-            console.log(bottomPage2)
             document.getElementById('secondPage').style.top = bottomPage1 + '.px'
             document.getElementById('thirdPage').style.top = '205%' //bottomPage2 + '.px'
             document.getElementById('thirdPage').style.height = window.innerHeight + 'px' //bottomPage2 + '.px'
@@ -414,6 +405,19 @@ cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
             lP = 'portrait' 
            document.getElementById('secondPage').style.height = (window.innerHeight*.67) + 'px'
            document.getElementById('secondPage').style.top = bottomPage1 + '.px'
+           document.getElementById('imgContainer').style.position = 'absolute'
+
+            
+            document.getElementById('tContainer').style.width = '100%'
+            document.getElementById('tContainer').style.top = '0%'
+            document.getElementById('tContainer').style.height = ''
+            document.getElementById('tContainer').style.flexDirection = 'row'
+
+            document.getElementById('imgContainer').style.top = ''
+            document.getElementById('imgContainer').style.left = '0%'
+            document.getElementById('imgContainer').style.height = '70%'
+            document.getElementById('imgContainer').style.width = '100%'
+
 
             for (var i = 0; i < daImages.length; i++) {daImages[i].style.width = '100%'; daImages[i].style.height = '' }
             var firstLine = (.25/(innerHeight/innerWidth))*(window.innerHeight - (window.innerWidth * .667))
@@ -491,31 +495,13 @@ cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
             // console.log(dx)
         }
 
-
-
-
-
-
-
-
-          
-    // onResize('test', 'cartoInfo', 'cartoList')
-// window.addEventListener("orientationchange", function(event) {
-//     onResize('test', 'cartoInfo', 'cartoList')
-//     // location.reload()
 // });
 var origWidth = window.innerWidth
-// var propHW = window.innerHeight/innerWidth;
 window.addEventListener("resize", function(event) {
-  // console.log(Math.abs(propHW-(window.innerHeight/innerWidth)))
-    // if (Math.abs(propHW-(window.innerHeight/innerWidth)) > .1) {
-      if (Math.abs(origWidth-(window.innerWidth)) > 20) {
+       if (Math.abs(origWidth-(window.innerWidth)) > 20) {
         origWidth = window.innerWidth
-    // propHW = window.innerHeight/innerWidth;
     onResize('test', 'cartoInfo', 'cartoList')
     resizeSlide()}
-
-    // location.reload()
 });
 onResize('test', 'cartoInfo', 'cartoList')
 
@@ -523,10 +509,6 @@ function resizeSlide() {
   document.getElementsByClassName('flickity-viewport')[0].style.height = document.getElementById('imgContainer').getBoundingClientRect().height + 'px'
 
 }
-
-
-/// Map calling
-
 
         const svgIconLarge = L.divIcon({
   html: `<svg class="mySVGicon" aria-labelledby="locationIconTitle" color="#000000" fill="none" height="48px" role="img" stroke="#000000" stroke-linecap="square" stroke-linejoin="miter" stroke-width="1" viewBox="0 0 24 24" width="48px" xmlns="http://www.w3.org/2000/svg"><title id="locationIconTitle"/><path id="svgIconTag" d="M12,21 C16,16.8 18,12.8 18,9 C18,5.6862915 15.3137085,3 12,3 C8.6862915,3 6,5.6862915 6,9 C6,12.8 8,16.8 12,21 Z"/><circle id="svgIconCircle" cx="12" cy="9" r="1"/></svg>`,  className: "",
@@ -746,8 +728,6 @@ function changePauseBot(a) {
     })
 };
 
-// changePauseBot('lightgray')
-// playTimer('start')
 map.on('zoomstart', function(e) { 
   decadeLessThan(currentDecade) })
 
@@ -766,7 +746,6 @@ if ((scrollY/window.scrollMaxY)>.95 & playClick ==0 & playScroll == 0 & lP=='lan
   playClick = 1
   playScroll = 1
 }
-
 
   if ((scrollY/window.scrollMaxY) < .5 & playScroll == 1) {
     playTimer('pause');  
