@@ -4,7 +4,17 @@ body {
     font-size: 4.5vw;
     background-color: #212326;
     max-width: 100%;
+    /* max-height: 100vh; */
     overflow-x: hidden;
+    padding: 0%;
+    margin: 0%;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+    
   }
 
 p {
@@ -41,7 +51,7 @@ img {
   background-color: #212326;
   font-size: 14px;
   height: 28px;
-  border: 1px solid white;
+  border: 3px solid white;
 }
 #timgContainer {
         /* border: 5px;
@@ -76,7 +86,7 @@ img {
 #imgContainer {
     position: relative;
     background-color:#212326;
-    border: 4px solid white;
+    border: 3px solid white;
     overflow: hidden;
     margin: 0%;
     height: 100%;
@@ -90,10 +100,12 @@ img {
     background-color: #212326;
     position: absolute;
     width: 100%;
-    height: 30px;
+    height: 50px;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    border: 3px solid white;
+
   }
 .tDiv {
     display: inline;
@@ -111,6 +123,7 @@ img {
     text-align: center;
     margin: 0%;
     padding: 0%;
+    display: inherit;
 }
 .asdadstP {
     vertical-align: middle; 
@@ -149,9 +162,11 @@ img {
         position: relative;
         font-size: 25px;}
         
-        .tDiv {
-            grid-row: 1;
-        }
+          .tSmall{
+            height: 100%;
+            font-size: 15px;
+
+          }
   
 
     #test{
@@ -173,12 +188,17 @@ img {
     #cartoList{
         /* overflow: auto; */
     }
+
+    /* #cartoInfo{
+      height: 100%;
+    } */
    
     #titleCarto{
         margin-top: 10px;
         text-align: center;
         padding: 0px;
         color: white;
+        font-size: 1.5vw ;
         font-family: 'Nunito Sans', sans-serif;
         /* font-size: 8vh;  */
       /* i need to put 10vh for vertical cellphone position */
@@ -224,14 +244,11 @@ img {
         overflow: scroll
 
     }
-    body{
-        background-color: #212326;
-    }
 
     #firstPage{
       background-color:#212326;
       height: 90%;
-      width: 100%;
+      width: 99%;
       position: absolute;
       top: 0px;
       z-index: 1;
@@ -361,23 +378,26 @@ z-index: 9999;
 #container {
   display: grid;
   width: 100%;
+  justify-content: center; 
+  /* height: 30px; */
   /* width: 330px; */
   /* height: 50%; */
 /* the following will allow it to be in the middle  */
-  background-color: red;
+  background-color: whitesmoke;
   opacity: 0.85; 
   /* margin: auto // important for centering  */
   margin: auto;
-  position:absolute; 
-  /* top: 85%; */
-  /* z-index: 999; */
+  position: absolute;
+
+
 }
 #svgDiv{
         /* margin: auto // important for centering  */
 margin: auto;
 position: relative;
+display: inherit;
 width: 330px;
-height: 60px;
+height: 45px;
 /* bottom: 0; */
 
 }
@@ -452,6 +472,7 @@ margin: 5px;
 margin-left: 10px;
 padding: 0;
 overflow: scroll;
+width: 100%;
 }
 
 #svgIconTag{
@@ -464,6 +485,8 @@ stroke:pink
 
 }
 #infoContainer{
+text-align: left;
 position: absolute;
-top:350px
+width: 100%;
+top:400px
 }

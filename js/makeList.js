@@ -20,7 +20,7 @@ var mL = {
         var newDiv = document.createElement("div");
         newDiv.setAttribute('id','titleCarto')
         newDiv.innerHTML = 'Number of Black Towns Identified By State'
-        newDiv.style.fontSize = this.fontSize*1.5 + 'px'
+        newDiv.style.fontSize = this.fontSize*1.2 + 'px'
         daDIV.appendChild(newDiv)
         newDiv = document.createElement("div");
         newDiv.setAttribute('id','subTitleCarto')

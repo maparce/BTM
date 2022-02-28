@@ -145,8 +145,7 @@ start cartogram
 <div id= "test" style="background-color: #212326; position: absolute;" ></div>
 <div id= "cartoInfo" style="background-color: #212326; position: absolute; ">
 <div id="titleCarto"></div>
-<div id="titleCarto"></div>
-
+<div id="subTitleCarto"></div>
 </div>
 <div id= "cartoList" style="background-color:  #212326; position: absolute;width: 600px"></div>
 </div>
@@ -410,6 +409,26 @@ cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
         {
             lP = 'landscape' // console.log('landscape')
             for (var i = 0; i < daImages.length; i++) {daImages[i].style.width = ''; daImages[i].style.height = '100%' }
+            
+            document.getElementById('imgContainer').style.position = 'absolute'
+            document.getElementById('imgContainer').style.top = '0%'
+            document.getElementById('imgContainer').style.left = '34%'
+            document.getElementById('imgContainer').style.height = '80%'
+            document.getElementById('imgContainer').style.width = '66%'
+            
+            document.getElementById('tContainer').style.width = '34%'
+            document.getElementById('tContainer').style.left = '0%'
+            document.getElementById('tContainer').style.height = '100%'
+            document.getElementById('tContainer').style.flexDirection = 'column'
+
+
+
+
+
+
+
+
+
 
             console.log(bottomPage2)
             document.getElementById('secondPage').style.top = bottomPage1 + '.px'
