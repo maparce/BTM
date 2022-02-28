@@ -387,6 +387,7 @@ cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
     var lP = ''; // landscape or portrait
 
     function onResize(divID, infoID, listID) {
+        alert('resize')
         var daImages = document.getElementsByClassName('cimage') //TagName('img')// select images from slider
         var lPages = 2.6
         var pPages = 3;
@@ -553,11 +554,11 @@ cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
 
 
           
-    onResize('test', 'cartoInfo', 'cartoList')
-window.addEventListener("orientationchange", function(event) {
-    onResize('test', 'cartoInfo', 'cartoList')
-    // location.reload()
-});
+    // onResize('test', 'cartoInfo', 'cartoList')
+// window.addEventListener("orientationchange", function(event) {
+//     onResize('test', 'cartoInfo', 'cartoList')
+//     // location.reload()
+// });
 window.addEventListener("resize", function(event) {
     onResize('test', 'cartoInfo', 'cartoList')
     resizeSlide()
