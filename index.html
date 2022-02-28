@@ -128,7 +128,6 @@ start cartogram
                       { 
                         if (inc == 0)
                         { document.querySelectorAll('.fullInc').forEach(e=>{
-                          console.log(e)
                           e.style.fill = '#464545';//
                           e.style.stroke = 'none';
                         })
@@ -138,7 +137,6 @@ start cartogram
                         }
                         if (inc == 1) {
                           document.querySelectorAll('.fullInc').forEach(e=>{
-                            console.log(e)
                             e.style.fill = 'none';//
                             e.style.stroke = '#464545';
                           })
@@ -153,7 +151,6 @@ start cartogram
                       {
                         if (unc == 0)
                         { document.querySelectorAll('.fullUnc').forEach(e=>{
-                          console.log(e)
                           e.style.fill = '#301f7e';//
                           e.style.stroke = 'none';
                         })
@@ -165,7 +162,6 @@ start cartogram
                         }
                         if (unc == 1) {
                           document.querySelectorAll('.fullUnc').forEach(e=>{
-                            console.log(e)
                             e.style.fill = 'none';//
                             e.style.stroke = 'black';
                           })
@@ -460,7 +456,6 @@ cartogram.data.state = dataCarto.ST_ABBRV; // data with the State Abbreviations
             listDIV.style.left = '0px'
 
             ///map resizing portrait
-            console.log(bottomPage2Portrait, "window", window.innerHeight)
             document.getElementById('thirdPage').style.top =  bottomPage2Portrait + 'px'
             document.getElementById('thirdPage').style.height =  window.innerHeight + 'px'
 
@@ -703,7 +698,6 @@ scrollerValue(iValue)
 var playClick = 0
 var timer;
 function playTimer(ps,iV) {
-  console.log('timer')
   if (ps == 'pause'){clearInterval(timer);  changePauseBot('black'); changePlayBot('lightgray'); playClick = 0; return}
   if (playClick == 1) {return}
   changePauseBot('lightgray')

@@ -66,7 +66,6 @@ var mL = {
         newDiv.style.overflow = 'scroll'
         daDIV.appendChild(newDiv)            
         infoArray.forEach((e,index)=>{
-            console.log(e)
             newDiv2 = document.createElement("p");
             newDiv2.setAttribute('class','infoItem item'+index)
             newDiv2.innerHTML = e;

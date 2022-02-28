@@ -22,7 +22,13 @@ var cartogram = {
     clickCarto: 
                 function(evt) {
                 var index = parseInt(evt.target.id.split('_cart_')[1])
-                
+                document.querySelectorAll('.state-tile').forEach(e=>{
+                    e.style.stroke = 'none'
+                })
+                evt.target.style.stroke = '#ddddb2'//yellow'//'#957197'//'#AAAAAA'
+                evt.target.style.strokeWidth ="3" 
+                //trying to make a border on click
+
                 // mL.state = evt.target.id.split('_cart')[0]
                 mL.state = dataCarto.STATE_LONG[index]
                 mL.numberOfStates = dataCarto.TOWNS[index]
@@ -105,6 +111,8 @@ var cartogram = {
                 gElem.setAttributeNS(null,'class', element +'_cart_'); 
                 var rectElem = document.createElementNS(xmlns, 'rect');
                 rectElem.setAttributeNS(null,'id', element +'_cart_' +index);
+                rectElem.setAttributeNS(null,'class', 'state-tile');
+
                 rectElem.setAttributeNS(null,'x', xRect); 
                 rectElem.setAttributeNS(null,'y', yRect);
                 rectElem.setAttributeNS(null,'width', cartogram.size);
